@@ -26,11 +26,11 @@
 
             $this->send->SMTPAuth = true;
 
-            $this->send->Username = 'support@aify-global.com';            
-            $this->send->Password = 'Aify2024@';
+            $this->send->Username = 'example@me.com';            
+            $this->send->Password = 'example';
 
-            $this->send->setFrom('support@aify-global.com', 'Aify-Global'); 
-            $this->send->addAddress($email, 'Aifyglobal');
+            $this->send->setFrom('example@me.com', 'me'); 
+            $this->send->addAddress($email, 'me');
 
             $this->send->Subject = $subject; 
             $this->send->Body = $content;
@@ -53,11 +53,11 @@
 
             $this->send->SMTPAuth = true;
 
-            $this->send->Username = 'support@aify-global.com';            
-            $this->send->Password = 'Aify2024@';
+            $this->send->Username = 'example@me.com';            
+            $this->send->Password = 'example';
 
-            $this->send->setFrom('support@aify-global.com', 'Aify-Global'); 
-            $this->send->addAddress($email, 'Aifyglobal');
+            $this->send->setFrom('example@me.com', 'me'); 
+            $this->send->addAddress($email, 'me');
 
             $this->send->Subject = $subject; 
             $this->send->Body = $content;
