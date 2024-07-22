@@ -116,7 +116,7 @@
         }
 
         // password reset
-        public function passwordReset($email, $password, $type, $role){
+        public function passwordReset($email, $password, $type){
             if($type == 'user'){
                 $sqlQuery = "UPDATE `".$this->process->users."` SET `password` = '$password' WHERE `email` = '$email'";
                 return $this->process->passResetUser($sqlQuery);

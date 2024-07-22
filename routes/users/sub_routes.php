@@ -135,7 +135,12 @@
 
 
     // post routes
-
+    // add history route (POST)
+    $router->addRoute('POST', '/history', function () {
+        global $sub;
+        $sub->postHistory($_POST);
+        exit;
+    });
     
 
 ?>
