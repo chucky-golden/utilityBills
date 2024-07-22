@@ -2,6 +2,11 @@
     // admin dashboard route (GET)
     $router->addRoute('GET', '/admin/dashboard', function () {
         if(isset($_SESSION['admin'])){
+
+            global $adminDash;
+            $usersTotal = $adminDash->getNumData('users');
+            $historyTotal = $adminDash->getNumData('history');
+
             require_once "views/admin/index.php";
             exit;
         }else{
@@ -77,10 +82,10 @@
             $user = $adminDash->actionUser($userId, $action);
             
             if($user == true){                
-                header('location: /admin/user?success=user updated?userid='.$userId);
+                header('location: /admin/user?success=user updated?id='.$userId);
                 exit;
             }else{
-                header('location: /admin/user?error=error updating user account?userid='.$userId);
+                header('location: /admin/user?error=error updating user account?id='.$userId);
                 exit;
             }
         }else{
@@ -95,50 +100,11 @@
 
 
 
-
-
-
-
-
-
-
-
-
     // POST
-    // admin add product route (POST)
-    $router->addRoute('POST', '/admin/addproduct', function () {
-        global $adminDash;
-        $adminDash->addproduct($_POST, $_FILES);
-        exit;
-    });
-    
-    
-    // admin add category route (POST)
-    $router->addRoute('POST', '/admin/addcategory', function () {
-        global $adminDash;
-        $adminDash->category($_POST, 'add');
-        exit;
-    });
-    
-    
     // admin edit product route (POST)
-    $router->addRoute('POST', '/admin/editproduct', function () {
+    $router->editUserBalance('POST', '/admin/edituserBalance', function () {
         global $adminDash;
-        $adminDash->editproduct($_POST, $_FILES);
-        exit;
-    });
-
-    // admin add category route (POST)
-    $router->addRoute('POST', '/admin/editcategory', function () {
-        global $adminDash;
-        $adminDash->category($_POST, 'edit');
-        exit;
-    });
-
-    // admin add category route (POST)
-    $router->addRoute('POST', '/admin/manageorder', function () {
-        global $adminDash;
-        $adminDash->editStatus($_POST);
+        $adminDash->editUserBalance($_POST);
         exit;
     });
 

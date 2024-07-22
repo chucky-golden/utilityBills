@@ -88,78 +88,9 @@
 
 
         // get searched products / categories / users for admin
-        public function searchedAdminProducts($name, $type) {
+        public function searchedAdminProducts($name) {
             try{
-                if($type == 'products'){
-                    $sqlQuery = "SELECT * FROM ".$this->process->products." WHERE name LIKE '%".$name."%'";
-                }elseif($type == 'categories'){
-                    $sqlQuery = "SELECT * FROM ".$this->process->categories." WHERE name LIKE '%".$name."%'";
-                }elseif($type == 'users'){
-                    $sqlQuery = "SELECT * FROM " . $this->process->users . " WHERE fname LIKE '%" . $name . "%' OR lname LIKE '%" . $name . "%' OR mname LIKE '%" . $name . "%'";
-                }
-                $data = $this->process->loginUsers($sqlQuery);
-                return $data;
-
-            } catch (\Exception $e) {
-                echo $e->getMessage();
-            }
-            
-
-        }
-
-
-        // get similar products for product details page
-        public function similarProducts($cat, $id) {
-            try{
-                $sqlQuery = "SELECT * FROM " . $this->process->products . " WHERE category = '$cat' AND id != '$id' ORDER BY RAND() LIMIT 4";
-
-                $data = $this->process->loginUsers($sqlQuery);
-                return $data;
-
-            } catch (\Exception $e) {
-                echo $e->getMessage();
-            }
-            
-
-        }
-
-
-
-        // get all orders for user using email
-        public function getOrders($email) {
-            try{
-                $sqlQuery = "SELECT * FROM " . $this->process->orders . " WHERE email = '$email' ORDER BY id DESC";
-                $data = $this->process->loginUsers($sqlQuery);
-                return $data;
-
-            } catch (\Exception $e) {
-                echo $e->getMessage();
-            }
-
-        }
-
-
-        // update paid for orders by user using orderid
-        public function updateOrder($orderid) {
-            try{
-                $sqlQuery = "UPDATE `".$this->process->orders."` SET `paid` = 1 WHERE `orderid` = '$orderid'";
-                $data = $this->process->loginUsers($sqlQuery);
-                return $data;
-
-            } catch (\Exception $e) {
-                echo $e->getMessage();
-            }
-
-        }
-
-
-
-
-
-        // get all products / categories / orders for admin
-        public function getShopProducts($offset, $recordsPerPage) {
-            try{
-                $sqlQuery = "SELECT * FROM ".$this->process->products." LIMIT $offset, $recordsPerPage";
+                $sqlQuery = "SELECT * FROM " . $this->process->users . " WHERE fname LIKE '%" . $name . "%' OR lname LIKE '%" . $name . "%' OR uname LIKE '%" . $name . "%'";
                 
                 $data = $this->process->loginUsers($sqlQuery);
                 return $data;
@@ -167,15 +98,50 @@
             } catch (\Exception $e) {
                 echo $e->getMessage();
             }
+            
 
         }
 
-        // get all products / categories / orders for admin
-        public function getNumProducts() {
+
+        // update paid for orders by user using orderid
+        public function editUserBalance($post) {
             try{
-                $sqlQuery = "SELECT COUNT(*) AS total FROM  ".$this->process->products."";
+                $actbal = trimData($post['actbal']);
+                $amount = trimData($post['amount']);
+                $id = $post['id'];
+
+                $actbal += $amount;
+
+                $sqlQuery = "UPDATE `".$this->process->users."` SET `actbal` = '$amount' WHERE `id` = '$id'";
                 $data = $this->process->loginUsers($sqlQuery);
-                return $data;
+
+                if($data == true) {
+                    $success = "details updated";
+                    header('location: /admin/user?success=user updated?id='.$id);
+                    return false;
+                }else {
+                    $error = "error updating details";
+                    header('location: /admin/user?error=error user updating?id='.$id);
+                    return false;
+                }
+
+            } catch (\Exception $e) {
+                echo $e->getMessage();
+            }
+
+        }
+
+
+        // get total number of users for admin
+        public function getNumData($type) {
+            try{
+                if($type == 'users'){
+                    $sqlQuery = "SELECT COUNT(*) AS total FROM  ".$this->process->users."";
+                }else{
+                    $sqlQuery = "SELECT COUNT(*) AS total FROM  ".$this->process->history."";
+                }
+                
+                return $this->process->loginUsers($sqlQuery);
 
             } catch (\Exception $e) {
                 echo $e->getMessage();
