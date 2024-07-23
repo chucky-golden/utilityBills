@@ -3,7 +3,7 @@
     // dashboard route (GET)
     $router->addRoute('GET', '/dashboard', function () {
         if(isset($_SESSION['user'])){
-            require_once "views/dashboard/index.php";
+            require_once "views/users/dashboard.php";
             exit;
         }else{
             header('location: /');
@@ -28,7 +28,7 @@
     $router->addRoute('GET', '/history', function () {
         if(isset($_SESSION['user'])){
             global $sub;
-            $orders = $sub->getHistory($_SESSION['user']['id']);
+            $history = $sub->getHistory($_SESSION['user']['id']);
             
             require_once "views/users/history.php";
             exit;

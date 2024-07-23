@@ -1,9 +1,9 @@
 <?php
     namespace Accounts;
 
-    require_once '../../middleware/validations.php';	
-    require_once '../../middleware/auth.php';
-    require_once '../../middleware/mailer.php';
+    require_once 'middlewares/validations.php';	
+    require_once 'middlewares/auth.php';
+    require_once 'middlewares/mailer.php';
 
     use Auth\Authentication;
     use MyMail\Mailer;

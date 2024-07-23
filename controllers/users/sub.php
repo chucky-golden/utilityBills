@@ -1,10 +1,10 @@
 <?php
     namespace Subs;
 
-    require_once '../../middleware/validations.php';	
-    require_once '../../middleware/auth.php';
-    require_once '../../middleware/processor.php';
-    require_once '../../middleware/mailer.php';
+    require_once 'middlewares/validations.php';	
+    require_once 'middlewares/auth.php';
+    require_once 'middlewares/processor.php';
+    require_once 'middlewares/mailer.php';
 
     use Processor\Processes;
     use Auth\Authentication;
@@ -46,6 +46,9 @@
                 $ref = trimData($post['ref']);
                 $package = trimData($post['package']);
                 $amount = trimData($post['amount']);
+                $actbal = trimData($post['actbal']);
+
+                $actbal -= $amount;
 
                 $createddate = date('d/m/Y H:i:sa');
 
@@ -53,6 +56,10 @@
                 
                 $saved = $this->process->registerUser($sqlQuery);
                 if($saved){
+
+                    $sqlQuery = "UPDATE `".$this->process->users."` SET `actbal` = '$actbal' WHERE `id` = '$userid'";
+                    $this->process->loginUsers($sqlQuery);
+
                     $msg = '
                         <!DOCTYPE html>
                         <html lang="en">

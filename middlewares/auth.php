@@ -109,7 +109,7 @@
 
                 }else{
                     $_SESSION['admin'] = $data[0];
-                    return 'admin';
+                    return true;
                 }
             }
             

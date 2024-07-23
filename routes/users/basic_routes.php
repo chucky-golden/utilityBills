@@ -1,31 +1,25 @@
 <?php
-    // index route
-    $router->addRoute('GET', '/', function () {
-        require_once "views/index.php";
-        exit;
-    });
-
     // login route (GET)
-    $router->addRoute('GET', '/login(.*)', function () {
-    require_once "views/login.php";
+    $router->addRoute('GET', '/login(.*)', function () {        
+        require_once "views/users/login.php";
         exit;
     });
 
     // forgot password route (GET)
     $router->addRoute('GET', '/forgot(.*)', function () {
-        require_once "views/forgot.php";
+        require_once "views/users/forgot.php";
         exit;
     });
 
     // passwordreset route (GET)
     $router->addRoute('GET', '/recover(.*)', function () {
-        require_once "views/recover.php";
+        require_once "views/users/recover.php";
         exit;
     });
 
     // register route (GET)
     $router->addRoute('GET', '/register(.*)', function () {
-        require_once "views/register.php";
+        require_once "views/users/register.php";
         exit;
     });
 
@@ -56,7 +50,7 @@
     });
 
     // register route (POST)
-    $router->addRoute('POST', '/signup', function () {
+    $router->addRoute('POST', '/register', function () {
         global $account;
         $account->createUser($_POST);
         exit;

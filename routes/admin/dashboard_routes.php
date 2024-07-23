@@ -4,10 +4,13 @@
         if(isset($_SESSION['admin'])){
 
             global $adminDash;
-            $usersTotal = $adminDash->getNumData('users');
-            $historyTotal = $adminDash->getNumData('history');
+            $usersTotal = $adminDash->getNumData('users')[0]['total'];
+            $historyTotal = $adminDash->getNumData('history')[0]['total'];
 
-            require_once "views/admin/index.php";
+            $limitedUsers = $adminDash->getLimitedData('u');
+            $limitedTransactions = $adminDash->getLimitedData('t');            
+
+            require_once "views/admin/dashboard.php";
             exit;
         }else{
             header('location: /');
@@ -21,7 +24,7 @@
         if(isset($_SESSION['admin'])){
 
             global $adminDash;
-            $users = $adminDash->getUsers();
+            $users = $adminDash->getUsers('u');
 
             require_once "views/admin/users.php";
             exit;
@@ -38,9 +41,42 @@
             $userid = $_GET['id'] ?? null;
 
             global $adminDash;
-            $user = $adminDash->getUser($userid);
+            $user = $adminDash->getUser('u', $userid);
             
             require_once "views/admin/user.php";
+            exit;
+        }else{
+            header('location: /');
+            exit;
+        }
+    });
+   
+    
+    // admin get all transactions route (GET)
+    $router->addRoute('GET', '/admin/transactions', function () {
+        if(isset($_SESSION['admin'])){
+
+            global $adminDash;
+            $transactions = $adminDash->getDatas('t');
+
+            require_once "views/admin/transactions.php";
+            exit;
+        }else{
+            header('location: /');
+            exit;
+        }
+    });
+   
+    
+    // admin get single transaction details route (GET)
+    $router->addRoute('GET', '/admin/transaction(.*)', function () {
+        if(isset($_SESSION['admin'])){
+            $transactionid = $_GET['id'] ?? null;
+
+            global $adminDash;
+            $transaction = $adminDash->getData('t', $transactionid);
+            
+            require_once "views/admin/transaction.php";
             exit;
         }else{
             header('location: /');
@@ -95,6 +131,15 @@
     });
 
 
+    // logout route (GET)
+    $router->addRoute('GET', '/admin/logout', function () {
+        session_unset();
+        session_destroy();
+        
+        header('location: /admin/login');
+        exit;
+    });
+
 
 
 
@@ -102,7 +147,7 @@
 
     // POST
     // admin edit product route (POST)
-    $router->editUserBalance('POST', '/admin/edituserBalance', function () {
+    $router->addRoute('POST', '/admin/edituserBalance', function () {
         global $adminDash;
         $adminDash->editUserBalance($_POST);
         exit;

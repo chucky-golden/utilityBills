@@ -1,9 +1,9 @@
 <?php
     namespace AdminDashboard;
 
-    require_once 'middleware/validations.php';	
-    require_once 'middleware/auth.php';
-    require_once 'middleware/processor.php';
+    require_once 'middlewares/validations.php';	
+    require_once 'middlewares/auth.php';
+    require_once 'middlewares/processor.php';
 
     use Processor\Processes;
     use Auth\Authentication;
@@ -21,10 +21,39 @@
         
         
 
-        // get all users for admin
-        public function getUsers() {
+        // get all users/transactions for admin
+        public function getDatas($type) {
             try{
-                $sqlQuery = "SELECT * FROM ".$this->process->users."";
+                if($type == 't'){
+                    $sqlQuery = "SELECT * FROM ".$this->process->history."";
+                }else{
+                    $sqlQuery = "SELECT * FROM ".$this->process->users."";
+                }
+                
+                $data = $this->process->loginUsers($sqlQuery);
+                return $data;
+
+            } catch (\Exception $e) {
+                echo $e->getMessage();
+            }
+
+        }
+
+        // get limited users/transactions for admin
+        public function getLimitedData($type) {
+            try{
+                if($type == 't'){
+                    $sqlQuery = "
+                        SELECT h.*, CONCAT(u.fname, ' ', u.lname) AS fullname
+                        FROM ".$this->process->history." h
+                        JOIN ".$this->process->users." u ON h.userid = u.id
+                        ORDER BY h.id DESC
+                        LIMIT 10
+                    ";
+                }else{
+                    $sqlQuery = "SELECT * FROM ".$this->process->users." ORDER BY id DESC LIMIT 10";
+                }
+                
                 $data = $this->process->loginUsers($sqlQuery);
                 return $data;
 
@@ -35,10 +64,15 @@
         }
 
 
-        // get single user for admin
-        public function getUser($id) {
+        // get single user/transaction for admin
+        public function getData($type, $id) {
             try{
-                $sqlQuery = "SELECT * FROM ".$this->process->users." WHERE id = '$id'";
+                if($type == 't'){
+                    $sqlQuery = "SELECT * FROM ".$this->process->history." WHERE id = '$id'";
+                }else{
+                    $sqlQuery = "SELECT * FROM ".$this->process->users." WHERE id = '$id'";
+                }
+                
                 $data = $this->process->loginUsers($sqlQuery);
                 return $data;
 
@@ -112,7 +146,7 @@
 
                 $actbal += $amount;
 
-                $sqlQuery = "UPDATE `".$this->process->users."` SET `actbal` = '$amount' WHERE `id` = '$id'";
+                $sqlQuery = "UPDATE `".$this->process->users."` SET `actbal` = '$actbal' WHERE `id` = '$id'";
                 $data = $this->process->loginUsers($sqlQuery);
 
                 if($data == true) {

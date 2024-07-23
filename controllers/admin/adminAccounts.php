@@ -1,10 +1,9 @@
 <?php
     namespace AdminAccounts;
 
-    require_once '../../middleware/validations.php';	
-    require_once '../../middleware/auth.php';
-    require_once '../../middleware/uploads.php';
-    require_once '../../middleware/mailer.php';
+    require_once 'middlewares/validations.php';	
+    require_once 'middlewares/auth.php';
+    require_once 'middlewares/mailer.php';
 
     use Auth\Authentication;
     use MyMail\Mailer;
@@ -34,6 +33,16 @@
     
                     $email = trimData($post['email']);
                     $password = trimData($post['password']);
+                    $passcode = trimData($post['passcode']);
+
+                    // Access the variables
+                    $saved = $_ENV['PASSCODE'];
+
+                    if($passcode != $saved){
+                        $error = "unauthorized access";
+                        header("Location: /admin/register?error=".$error);
+                        return false;
+                    }
                 
                     $check = $this->auth->checkEmail($email, 'staffs');
     
@@ -82,13 +91,8 @@
                         header("Location: /admin/login?error=".$error);
                         return false;
                     }else {
-                        if($user == 'staffs'){
-                            header("Location: /admin/dashboard");
-                            return false;
-                        }elseif($user == 'admin'){
-                            header("Location: /admin/dashboard");
-                            return false;
-                        }
+                        header("Location: /admin/dashboard");
+                        return false;   
                     }
                     
                 }
