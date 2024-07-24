@@ -22,12 +22,31 @@
         
 
         // get all users/transactions for admin
-        public function getDatas($type) {
+        public function getDatas($type, $offset, $recordsPerPage) {
             try{
                 if($type == 't'){
-                    $sqlQuery = "SELECT * FROM ".$this->process->history."";
+                    $sqlQuery = "SELECT * FROM ".$this->process->history." LIMIT $offset, $recordsPerPage";
                 }else{
-                    $sqlQuery = "SELECT * FROM ".$this->process->users."";
+                    $sqlQuery = "SELECT * FROM ".$this->process->users." LIMIT $offset, $recordsPerPage";
+                }
+                
+                $data = $this->process->loginUsers($sqlQuery);
+                return $data;
+
+            } catch (\Exception $e) {
+                echo $e->getMessage();
+            }
+
+        }
+
+
+        // get all users/transactions for admin
+        public function searchedDatas($type, $key, $offset, $recordsPerPage) {
+            try{
+                if($type == 'transactions'){
+                    $sqlQuery = "SELECT * FROM ".$this->process->history." WHERE ref = '$key' LIMIT $offset, $recordsPerPage";
+                }else{
+                    $sqlQuery = "SELECT * FROM ".$this->process->users." WHERE fname LIKE '%".$key."%' OR lname LIKE '%".$key."%' OR email LIKE '%".$key."%' LIMIT $offset, $recordsPerPage";
                 }
                 
                 $data = $this->process->loginUsers($sqlQuery);
@@ -173,6 +192,23 @@
                     $sqlQuery = "SELECT COUNT(*) AS total FROM  ".$this->process->users."";
                 }else{
                     $sqlQuery = "SELECT COUNT(*) AS total FROM  ".$this->process->history."";
+                }
+                
+                return $this->process->loginUsers($sqlQuery);
+
+            } catch (\Exception $e) {
+                echo $e->getMessage();
+            }
+
+        }
+
+        // get total number of users for admin
+        public function getNumSearchData($type, $key) {
+            try{
+                if($type == 'users'){
+                    $sqlQuery = "SELECT COUNT(*) AS total FROM  ".$this->process->users." WHERE ref = '$key'";
+                }else{
+                    $sqlQuery = "SELECT COUNT(*) AS total FROM  ".$this->process->history." WHERE ref = '$key'";
                 }
                 
                 return $this->process->loginUsers($sqlQuery);

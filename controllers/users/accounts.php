@@ -39,6 +39,13 @@
                     $password = trimData($post['password']);
                 
                     $check = $this->auth->checkEmail($email, 'user');
+                    $check2 = $this->auth->checkPhone($phone);
+
+                    if($check2 > 0){
+                        $error = "phone number already used";
+                        header("Location: /register?error=".$error);
+                        return false;
+                    }
     
                     if($check > 0){
                         $error = "email already taken by another user";
@@ -80,9 +87,7 @@
             
                             $subject = 'Welcome';
 
-                            $this->mail->regemail($email, $subject, $msg);
-
-
+                            // $this->mail->regemail($email, $subject, $msg);
 
 
                             $success = "now log in with your details";

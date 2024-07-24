@@ -69,15 +69,13 @@
             <div class="col-12">
               <div class="card recent-sales overflow-auto">
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="p-4">
-                            <p>search for users using email</p>
-                            <input type="text" name="" id="" placeholder="enter email address" class="form-control"><br>
-                            <button class="btn btn-primary">search</button>
-                        </div>
-                    </div>
-                </div>
+                  <div class="col-md-6">
+                      <form action="/admin/usersearch" method="GET" class="p-4">
+                          <p>search for users using email</p>
+                          <input type="text" name="search" id="" placeholder="enter email address" class="form-control"><br>
+                          <button class="btn btn-primary">search</button>
+                      </form>
+                  </div>
 
                 <div class="card-body">
                   <h5 class="card-title">Recently Created Accounts</h5>
@@ -98,9 +96,9 @@
                     ?>
                       <tr>
                         <td><?=$users['fname'].' '.$users['lname']?></td>
-                        <td><a href="#" class="text-primary"><?=$users['email']?></a></td>
+                        <td class="text-primary"><?=$users['email']?></td>
                         <td>$<?=number_format($users['actbal'])?></td>
-                        <td><a href="" class="btn btn-success">View</a></td>
+                        <td><a href="/admin/user?id=<?=$users['id']?>" class="btn btn-primary">View</a></td>
                       </tr>
                       <?php endforeach; ?>
                     <?php else: ?>
@@ -121,18 +119,16 @@
             <div class="col-12">
               <div class="card top-selling overflow-auto">
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="p-4">
-                            <p>search for transaction using reference</p>
-                            <input type="text" name="" id="" placeholder="enter transaction reference" class="form-control"><br>
-                            <button class="btn btn-primary">search</button>
-                        </div>
-                    </div>
-                </div>
+                  <div class="col-md-6">
+                      <form action="/admin/transactionsearch" method="GET" class="p-4">
+                          <p>search for transaction using reference</p>
+                          <input type="text" name="search" id="" placeholder="enter transaction reference" class="form-control"><br>
+                          <button class="btn btn-primary">search</button>
+                      </form>
+                  </div>
 
                 <div class="card-body pb-0">
-                <h5 class="card-title">Recent Transaction</h5>
+                <h5 class="card-title">Recent Transactions</h5>
 
                   <table class="table table-borderless">
                     <thead>
@@ -141,6 +137,7 @@
                         <th scope="col">Owner</th>
                         <th scope="col">Package</th>
                         <th scope="col">Amount</th>
+                        <th scope="col">Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -154,6 +151,7 @@
                         <td><?=$transaction['fullname']; ?></td>
                         <td><?=$transaction['package']; ?></td>
                         <td><?=$transaction['amount']; ?></td>
+                        <td><a href="/admin/user?id=<?=$transaction['userid']?>" class="btn btn-primary">View Owner</a></td>
                       </tr>
                       <?php endforeach; ?>
                     <?php else: ?>

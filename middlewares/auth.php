@@ -28,6 +28,13 @@
         }
 
 
+        // check if email exists
+        public function checkPhone($phone){
+            $sqlQuery = "SELECT * FROM ".$this->process->users." WHERE phone = '$phone'";
+            return $this->process->checkMailExists($sqlQuery);
+        }
+
+
         // register user
         public function registerUser($fname, $lname, $uname, $email, $phone, $password, $rfflink, $type){
             if($type === 'user'){

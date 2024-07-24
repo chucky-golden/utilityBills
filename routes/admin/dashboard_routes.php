@@ -22,9 +22,19 @@
     // admin get all users route (GET)
     $router->addRoute('GET', '/admin/users', function () {
         if(isset($_SESSION['admin'])){
-
             global $adminDash;
-            $users = $adminDash->getUsers('u');
+
+            $recordsPerPage = 10;
+
+            $page = isset($_GET['page']) ? $_GET['page'] : 1;
+            $offset = ($page - 1) * $recordsPerPage;
+
+            $users = $adminDash->getDatas('u', $offset, $recordsPerPage);
+            $totalRecordsQuery = $adminDash->getNumData('users');
+
+            $totalRecords = $totalRecordsQuery[0]['total'];
+
+            $totalPages = ceil($totalRecords / $recordsPerPage);
 
             require_once "views/admin/users.php";
             exit;
@@ -41,7 +51,7 @@
             $userid = $_GET['id'] ?? null;
 
             global $adminDash;
-            $user = $adminDash->getUser('u', $userid);
+            $user = $adminDash->getData('u', $userid);
             
             require_once "views/admin/user.php";
             exit;
@@ -55,9 +65,19 @@
     // admin get all transactions route (GET)
     $router->addRoute('GET', '/admin/transactions', function () {
         if(isset($_SESSION['admin'])){
-
             global $adminDash;
-            $transactions = $adminDash->getDatas('t');
+
+            $recordsPerPage = 10;
+
+            $page = isset($_GET['page']) ? $_GET['page'] : 1;
+            $offset = ($page - 1) * $recordsPerPage;
+
+            $transactions = $adminDash->getDatas('t', $offset, $recordsPerPage);
+            $totalRecordsQuery = $adminDash->getNumData('users');
+
+            $totalRecords = $totalRecordsQuery[0]['total'];
+
+            $totalPages = ceil($totalRecords / $recordsPerPage);
 
             require_once "views/admin/transactions.php";
             exit;
@@ -128,6 +148,50 @@
             header('location: /');
             exit;
         }
+    });
+
+
+    // search users route (GET)
+    $router->addRoute('GET', '/admin/usersearch(.*)', function () {
+        global $adminDash;
+            
+        $search = $_GET['search'] ?? null;
+        $recordsPerPage = 10;
+
+        $page = isset($_GET['page']) ? $_GET['page'] : 1;
+        $offset = ($page - 1) * $recordsPerPage;
+
+        $users = $adminDash->searchedDatas('users', $search, $offset, $recordsPerPage);
+        $totalRecordsQuery = $adminDash->getNumSearchData('users', $search);
+
+        $totalRecords = $totalRecordsQuery[0]['total'];
+
+        $totalPages = ceil($totalRecords / $recordsPerPage);
+
+        require_once "views/admin/users.php";
+        exit;
+    });
+
+
+    // search transactions route (GET)
+    $router->addRoute('GET', '/admin/transactionsearch(.*)', function () {
+        global $adminDash;
+            
+        $search = $_GET['search'] ?? null;
+        $recordsPerPage = 10;
+
+        $page = isset($_GET['page']) ? $_GET['page'] : 1;
+        $offset = ($page - 1) * $recordsPerPage;
+
+        $transactions = $adminDash->searchedDatas('transactions', $search, $offset, $recordsPerPage);
+        $totalRecordsQuery = $adminDash->getNumSearchData('transactions', $search);
+
+        $totalRecords = $totalRecordsQuery[0]['total'];
+
+        $totalPages = ceil($totalRecords / $recordsPerPage);
+
+        require_once "views/admin/transactions.php";
+        exit;
     });
 
 
