@@ -26,7 +26,8 @@
             <div class="card recent-sales overflow-auto">
 
                 <div class="col-md-6">
-                    <form action="/admin/usersearch" method="GET" class="p-4">
+                    <form action="/admin/searchuser" method="GET" class="p-4">
+                        <?php require_once('partials/alert.php'); ?>
                         <p>search for users using email</p>
                         <input type="text" name="search" id="" placeholder="enter email address" class="form-control"><br>
                         <button class="btn btn-primary">search</button>
@@ -36,9 +37,9 @@
                 <div class="card-body">
                     <h5 class="card-title">
                         <?php if (isset($_GET['search'])) :  ?>
-                            Created Accounts
-                        <?php else: ?>
                             Searched Account Result
+                        <?php else: ?>
+                                Created Accounts
                         <?php endif ?>
                             
                     </h5>

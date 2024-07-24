@@ -70,7 +70,7 @@
               <div class="card recent-sales overflow-auto">
 
                   <div class="col-md-6">
-                      <form action="/admin/usersearch" method="GET" class="p-4">
+                      <form action="/admin/searchuser" method="GET" class="p-4">
                           <p>search for users using email</p>
                           <input type="text" name="search" id="" placeholder="enter email address" class="form-control" required><br>
                           <button class="btn btn-primary">search</button>
@@ -120,7 +120,7 @@
               <div class="card top-selling overflow-auto">
 
                   <div class="col-md-6">
-                      <form action="/admin/transactionsearch" method="GET" class="p-4">
+                      <form action="/admin/searchtransaction" method="GET" class="p-4">
                           <p>search for transaction using reference</p>
                           <input type="text" name="search" id="" placeholder="enter transaction reference" class="form-control" required><br>
                           <button class="btn btn-primary">search</button>

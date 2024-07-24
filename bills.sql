@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 22, 2024 at 06:06 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.1.25
+-- Generation Time: Jul 24, 2024 at 09:36 PM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 7.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -31,7 +30,14 @@ CREATE TABLE `admin` (
   `id` int(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `email`, `password`) VALUES
+(1, 'chukschibyke92@gmail.com', '07d5c105cc69826a68e230dff76f4b85a6da591c');
 
 -- --------------------------------------------------------
 
@@ -46,7 +52,17 @@ CREATE TABLE `history` (
   `package` varchar(255) NOT NULL,
   `amount` varchar(255) NOT NULL,
   `createddate` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `history`
+--
+
+INSERT INTO `history` (`id`, `userid`, `ref`, `package`, `amount`, `createddate`) VALUES
+(1, '1', '4455yyhu7yddd', 'GOTV Joli', '4800', '2024-07-23 21:53:08'),
+(2, '1', 'dsjjs7s77734h4h4h', 'MTN Data', '1200', '2024-07-23 21:53:08'),
+(3, '2', 'yyd6d6s6s6s6ss', 'Startimes', '4600', '2024-07-23 21:53:08'),
+(4, '2', '884u4u484848rur', 'DSTV 32', '11000', '2024-07-23 21:53:08');
 
 -- --------------------------------------------------------
 
@@ -62,11 +78,19 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `actbal` double NOT NULL,
+  `actbal` double NOT NULL DEFAULT '0',
   `rflink` varchar(255) NOT NULL,
-  `active` int(1) NOT NULL DEFAULT 1,
-  `createddate` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `active` int(1) NOT NULL DEFAULT '1',
+  `createddate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `fname`, `lname`, `uname`, `email`, `phone`, `password`, `actbal`, `rflink`, `active`, `createddate`) VALUES
+(1, 'Chucky', 'Cheese', 'Chuckycheese', 'chukschibyke92@gmail.com', '+2348162216532', '07d5c105cc69826a68e230dff76f4b85a6da591c', 40, 'https://www.YuzTech.com/register?ref=1320259870', 1, '2024-07-23 21:53:08'),
+(2, 'Zlatan', 'Kit', 'Kit', 'kit@gmail.com', '0902727626', '07d5c105cc69826a68e230dff76f4b85a6da591c', 0, 'https://www.YuzTech.com/register?ref=3031531064', 1, '2024-07-24 18:26:56');
 
 --
 -- Indexes for dumped tables
@@ -98,21 +122,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
-
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `history`
 --
 ALTER TABLE `history`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
-
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
-COMMIT;
-
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -6,12 +6,19 @@
   <script src="https://chuckyassets.netlify.app/vendor/chart.js/chart.umd.js"></script>
   <script src="https://chuckyassets.netlify.app/vendor/echarts/echarts.min.js"></script>
   <script src="https://chuckyassets.netlify.app/vendor/quill/quill.js"></script>
-  <script src="https://chuckyassets.netlify.app/vendor/simple-datatables/simple-datatables.js"></script>
+  <!-- <script src="https://chuckyassets.netlify.app/vendor/simple-datatables/simple-datatables.js"></script> -->
   <script src="https://chuckyassets.netlify.app/vendor/tinymce/tinymce.min.js"></script>
 
   <!-- Template Main JS File -->
   <script src="https://chuckyassets.netlify.app/js/main.js"></script>
 
 </body>
-
+<script>
+  let myAlert = document.getElementById('myalert');
+  if (myAlert) {
+    setTimeout(() => {
+      myAlert.style.display = 'none';
+    }, 3000);
+  }
+</script>
 </html>

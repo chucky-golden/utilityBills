@@ -26,7 +26,7 @@
             <div class="card recent-sales overflow-auto">
 
                 <div class="col-md-6">
-                    <form action="/admin/transactionsearch" method="GET" class="p-4">
+                    <form action="/admin/searchtransaction" method="GET" class="p-4">
                         <p>search for transaction using reference</p>
                         <input type="text" name="search" id="" placeholder="enter transaction reference" class="form-control"><br>
                         <button class="btn btn-primary">search</button>
@@ -36,9 +36,9 @@
                 <div class="card-body pb-0">
                     <h5 class="card-title">
                         <?php if (isset($_GET['search'])) :  ?>
-                            Created Accounts
+                            Searched Transaction Result
                         <?php else: ?>
-                            Searched Account Result
+                            Transaction History
                         <?php endif ?>
                             
                     </h5>
@@ -87,6 +87,7 @@
                                 <th scope="col">Owner</th>
                                 <th scope="col">Package</th>
                                 <th scope="col">Amount</th>
+                                <th scope="col">Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -100,6 +101,7 @@
                                 <td><?=$transaction['fullname']; ?></td>
                                 <td><?=$transaction['package']; ?></td>
                                 <td><?=$transaction['amount']; ?></td>
+                                <td><a href="/admin/user?id=<?=$transaction['userid']?>" class="btn btn-primary">View Owner</a></td>
                             </tr>
                             <?php endforeach; ?>
                             <?php else: ?>

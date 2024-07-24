@@ -1,7 +1,4 @@
 <?php
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
-
     // admin dashboard route (GET)
     $router->addRoute('GET', '/admin/dashboard', function () {
         if(isset($_SESSION['admin'])){
@@ -54,8 +51,9 @@
             $userid = $_GET['id'] ?? null;
 
             global $adminDash;
-            $user = $adminDash->getData('u', $userid);
-            
+            $user = $adminDash->getData('u', $userid)[0];
+            $transactions = $adminDash->getData('t', $userid);
+
             require_once "views/admin/user.php";
             exit;
         }else{
@@ -76,6 +74,7 @@
             $offset = ($page - 1) * $recordsPerPage;
 
             $transactions = $adminDash->getDatas('t', $offset, $recordsPerPage);
+
             $totalRecordsQuery = $adminDash->getNumData('users');
 
             $totalRecords = $totalRecordsQuery[0]['total'];
@@ -141,10 +140,10 @@
             $user = $adminDash->actionUser($userId, $action);
             
             if($user == true){                
-                header('location: /admin/user?success=user updated?id='.$userId);
+                header('location: /admin/user?success=user updated&id='.$userId);
                 exit;
             }else{
-                header('location: /admin/user?error=error updating user account?id='.$userId);
+                header('location: /admin/user?error=error updating user account&id='.$userId);
                 exit;
             }
         }else{
@@ -155,30 +154,35 @@
 
 
     // search users route (GET)
-    $router->addRoute('GET', '/admin/usersearch(.*)', function () {
-        global $adminDash;
+    $router->addRoute('GET', '/admin/searchuser(.*)', function () {
+        if(isset($_SESSION['admin'])){
+            global $adminDash;
+                
+            $search = $_GET['search'] ?? null;
             
-        $search = $_GET['search'] ?? null;
-        
-        $recordsPerPage = 10;
+            $recordsPerPage = 10;
 
-        $page = isset($_GET['page']) ? $_GET['page'] : 1;
-        $offset = ($page - 1) * $recordsPerPage;
+            $page = isset($_GET['page']) ? $_GET['page'] : 1;
+            $offset = ($page - 1) * $recordsPerPage;
 
-        $users = $adminDash->searchedDatas('users', $search, $offset, $recordsPerPage);
-        $totalRecordsQuery = $adminDash->getNumSearchData('users', $search);
+            $users = $adminDash->searchedDatas('users', $search, $offset, $recordsPerPage);
+            $totalRecordsQuery = $adminDash->getNumSearchData('users', $search, $offset, $recordsPerPage);
 
-        $totalRecords = $totalRecordsQuery[0]['total'];
+            $totalRecords = $totalRecordsQuery[0]['total'];
 
-        $totalPages = ceil($totalRecords / $recordsPerPage);
+            $totalPages = ceil($totalRecords / $recordsPerPage);
 
-        require_once "views/admin/users.php";
-        exit;
+            require_once "views/admin/users.php";
+            exit;
+        }else{
+            header('location: /');
+            exit;
+        }
     });
 
 
     // search transactions route (GET)
-    $router->addRoute('GET', '/admin/transactionsearch(.*)', function () {
+    $router->addRoute('GET', '/admin/searchtransaction(.*)', function () {
         global $adminDash;
             
         $search = $_GET['search'] ?? null;
@@ -188,7 +192,7 @@
         $offset = ($page - 1) * $recordsPerPage;
 
         $transactions = $adminDash->searchedDatas('transactions', $search, $offset, $recordsPerPage);
-        $totalRecordsQuery = $adminDash->getNumSearchData('transactions', $search);
+        $totalRecordsQuery = $adminDash->getNumSearchData('transactions', $search, '', '');
 
         $totalRecords = $totalRecordsQuery[0]['total'];
 
@@ -215,7 +219,7 @@
 
     // POST
     // admin edit product route (POST)
-    $router->addRoute('POST', '/admin/edituserBalance', function () {
+    $router->addRoute('POST', '/admin/edituserbalance', function () {
         global $adminDash;
         $adminDash->editUserBalance($_POST);
         exit;

@@ -13,5 +13,12 @@
   <script src="https://chuckyassets.netlify.app/js/main.js"></script>
 
 </body>
-
+<script>
+  const myAlert = document.getElementById('myalert');
+  if (myAlert) {
+    setTimeout(() => {
+      myAlert.style.display = 'none';
+    }, 3000);
+  }
+</script>
 </html>

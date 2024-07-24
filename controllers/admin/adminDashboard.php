@@ -25,7 +25,13 @@
         public function getDatas($type, $offset, $recordsPerPage) {
             try{
                 if($type == 't'){
-                    $sqlQuery = "SELECT * FROM ".$this->process->history." LIMIT $offset, $recordsPerPage";
+                    $sqlQuery = "
+                        SELECT h.*, CONCAT(u.fname, ' ', u.lname) AS fullname
+                        FROM ".$this->process->history." h
+                        JOIN ".$this->process->users." u ON h.userid = u.id
+                        ORDER BY h.id DESC
+                        LIMIT $offset, $recordsPerPage
+                    ";
                 }else{
                     $sqlQuery = "SELECT * FROM ".$this->process->users." LIMIT $offset, $recordsPerPage";
                 }
@@ -44,7 +50,14 @@
         public function searchedDatas($type, $key, $offset, $recordsPerPage) {
             try{
                 if($type == 'transactions'){
-                    $sqlQuery = "SELECT * FROM ".$this->process->history." WHERE ref = '$key' LIMIT $offset, $recordsPerPage";
+                    $sqlQuery = "
+                        SELECT h.*, CONCAT(u.fname, ' ', u.lname) AS fullname
+                        FROM ".$this->process->history." h
+                        JOIN ".$this->process->users." u ON h.userid = u.id
+                        WHERE ref = '$key'
+                        ORDER BY h.id DESC
+                        LIMIT $offset, $recordsPerPage
+                    ";
                 }else{
                     $sqlQuery = "SELECT * FROM ".$this->process->users." WHERE email LIKE '%".$key."%' LIMIT $offset, $recordsPerPage";
                 }
@@ -87,7 +100,7 @@
         public function getData($type, $id) {
             try{
                 if($type == 't'){
-                    $sqlQuery = "SELECT * FROM ".$this->process->history." WHERE id = '$id'";
+                    $sqlQuery = "SELECT * FROM ".$this->process->history." WHERE userid = '$id'";
                 }else{
                     $sqlQuery = "SELECT * FROM ".$this->process->users." WHERE id = '$id'";
                 }
@@ -166,15 +179,13 @@
                 $actbal += $amount;
 
                 $sqlQuery = "UPDATE `".$this->process->users."` SET `actbal` = '$actbal' WHERE `id` = '$id'";
-                $data = $this->process->loginUsers($sqlQuery);
+                $data = $this->process->registerUser($sqlQuery);
 
                 if($data == true) {
-                    $success = "details updated";
-                    header('location: /admin/user?success=user updated?id='.$id);
+                    header('location: /admin/user?success=user updated&id='.$id);
                     return false;
                 }else {
-                    $error = "error updating details";
-                    header('location: /admin/user?error=error user updating?id='.$id);
+                    header('location: /admin/user?error=error updating balance&id='.$id);
                     return false;
                 }
 
@@ -203,10 +214,10 @@
         }
 
         // get total number of users for admin
-        public function getNumSearchData($type, $key) {
+        public function getNumSearchData($type, $key, $offset, $recordsPerPage) {
             try{
                 if($type == 'users'){
-                    $sqlQuery = "SELECT COUNT(*) AS total FROM  ".$this->process->users." WHERE ref = '$key'";
+                    $sqlQuery = "SELECT COUNT(*) AS total FROM  ".$this->process->users." WHERE email LIKE '%".$key."%' LIMIT $offset, $recordsPerPage";
                 }else{
                     $sqlQuery = "SELECT COUNT(*) AS total FROM  ".$this->process->history." WHERE ref = '$key'";
                 }
