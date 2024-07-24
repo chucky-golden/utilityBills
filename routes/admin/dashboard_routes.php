@@ -1,4 +1,7 @@
 <?php
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+
     // admin dashboard route (GET)
     $router->addRoute('GET', '/admin/dashboard', function () {
         if(isset($_SESSION['admin'])){
@@ -156,6 +159,7 @@
         global $adminDash;
             
         $search = $_GET['search'] ?? null;
+        
         $recordsPerPage = 10;
 
         $page = isset($_GET['page']) ? $_GET['page'] : 1;

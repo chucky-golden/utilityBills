@@ -46,7 +46,7 @@
                 if($type == 'transactions'){
                     $sqlQuery = "SELECT * FROM ".$this->process->history." WHERE ref = '$key' LIMIT $offset, $recordsPerPage";
                 }else{
-                    $sqlQuery = "SELECT * FROM ".$this->process->users." WHERE fname LIKE '%".$key."%' OR lname LIKE '%".$key."%' OR email LIKE '%".$key."%' LIMIT $offset, $recordsPerPage";
+                    $sqlQuery = "SELECT * FROM ".$this->process->users." WHERE email LIKE '%".$key."%' LIMIT $offset, $recordsPerPage";
                 }
                 
                 $data = $this->process->loginUsers($sqlQuery);
