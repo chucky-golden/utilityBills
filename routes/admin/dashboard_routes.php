@@ -5,7 +5,7 @@
 
             global $adminDash;
             $usersTotal = $adminDash->getNumData('users')[0]['total'];
-            $historyTotal = $adminDash->getNumData('history')[0]['total'];
+            $historyTotal = $adminDash->getTotalTransaction();
 
             $limitedUsers = $adminDash->getLimitedData('u');
             $limitedTransactions = $adminDash->getLimitedData('t');            

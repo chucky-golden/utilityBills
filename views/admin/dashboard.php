@@ -56,7 +56,17 @@
                       <i class="bi bi-currency-dollar"></i>
                     </div>
                     <div class="ps-3">
-                      <h6><s>N</s><?=number_format($historyTotal)?></h6>
+                      <h6><s>N</s>
+                        <?php
+                          if ($historyTotal >= 1000000) {
+                            echo '1M+';
+                          } elseif ($historyTotal >= 100000) {
+                            echo '100K+';
+                          } else {
+                            echo number_format($historyTotal);
+                          }
+                        ?>
+                      </h6>
                     </div>
                   </div>
                 </div>
