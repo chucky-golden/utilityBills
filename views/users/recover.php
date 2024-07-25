@@ -26,7 +26,7 @@
                     <p class="text-center small">Enter new password to reset account</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate>
+                  <form action="/recover" method="POST" class="row g-3 needs-validation" novalidate>
 
                     <?php require_once('partials/alert.php'); ?>
 

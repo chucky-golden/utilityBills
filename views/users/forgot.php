@@ -26,7 +26,7 @@
                     <p class="text-center small">Enter registered <b>admin</b> email address</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate>
+                  <form action="/forgot" method="POST" class="row g-3 needs-validation" novalidate>
 
                     <?php require_once('partials/alert.php'); ?>
                     

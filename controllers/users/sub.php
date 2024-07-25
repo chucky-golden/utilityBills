@@ -27,7 +27,7 @@
         // get all users transactions
         public function getHistory($id) {
             try{
-                $sqlQuery = "SELECT * FROM " . $this->process->history . " WHERE userid = '$id' ORDER BY id DESC";
+                $sqlQuery = "SELECT * FROM " . $this->process->history . " WHERE userid = '$id' ORDER BY id DESC LIMIT 25";
                 $data = $this->process->loginUsers($sqlQuery);
                 return $data;
 

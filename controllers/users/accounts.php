@@ -302,7 +302,7 @@
 
                         }else {
                             $error = "incorrect existing password";
-                            header("Location: /changepassword?error=".$error);
+                            header("Location: /profile?error=".$error);
                             return false;
                         }
                     }

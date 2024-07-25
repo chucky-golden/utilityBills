@@ -26,7 +26,7 @@
                     <p class="text-center small">Enter your email & password to login</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate>
+                  <form action="/login" method="POST" class="row g-3 needs-validation" novalidate>
 
                     <?php require_once('partials/alert.php'); ?>
 
