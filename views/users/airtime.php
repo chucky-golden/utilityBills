@@ -3,8 +3,8 @@
     $apikey = $_ENV['API_KEY'];
     $publickey = $_ENV['PUBLIC_KEY'];
     $secretkey = $_ENV['SECRET_KEY'];
-    $username = $_ENV['USERNAME'];
-
+    $username = $_ENV['NAME'];
+    
     require_once('partials/header.php'); ?>
 
 <body>
@@ -52,7 +52,7 @@
                             <label class="form-check-label ms-2 text-danger" for="flexSwitchCheckDefault">Kindly Switch to Continue the Process...</label>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary col-12">Buy Now</button>
+                            <button type="submit" class="btn btn-primary col-12" id="airtime-buy">Buy Now</button>
                         </div>
                     </form><!-- Vertical Form -->
 
@@ -131,30 +131,28 @@
 
         const handleResponse = (response) => {
             if (response.response_description === "TRANSACTION SUCCESSFUL") {
-                console.log(response);
-                msg.innerHTML = 'operation successful'
-                msg.style.color = 'green'
-
-                setTimeout(() => {
-                    msg.innerHTML = ''
-                }, 3000);
+                window.location.href = '/history?success=Transaction Completed&ref=' + response.requestId + '&amount=' + response.amount
 
                 return false
             } else {
-                console.log(response);
-                msg.innerHTML = 'error completing operation'
-                msg.style.color = 'red'
-
-                setTimeout(() => {
-                    msg.innerHTML = ''
-                }, 3000);
-
+                window.location.href = '/history?error=error completing Transaction&ref=' + response.requestId
                 return false
             }
         };
 
         const handleError = (error) => {
-            alert("Error: " + error.message);
+            const buy = document.getElementById("airtime-buy")
+
+            msg.innerHTML = error.message
+            msg.style.color = 'red'
+            buy.innerHTML = 'Buy Now'
+            buy.disabled = false
+
+            setTimeout(() => {
+                msg.innerHTML = ''
+            }, 3000); 
+
+            return false
         };
 
         const requestId = () => {
@@ -192,15 +190,33 @@
         if (airtimeForm) {
             airtimeForm.addEventListener("submit", function (e) {
                 e.preventDefault();
+                
                 const network = document.getElementById("dynamic-select").value
-                const amount = document.getElementById("airtime-amount").value
+                const amount = parseFloat(document.getElementById("airtime-amount").value)
                 const phone = document.getElementById("airtime-phone").value
+                const buy = document.getElementById("airtime-buy")
+
+                buy.innerHTML = 'Processing...'
+                buy.disabled = true
 
                 let request_id = requestId()
 
+                if(amount > actbal){
+                    msg.innerHTML = 'insufficient funds'
+                    msg.style.color = 'red'
+                    buy.innerHTML = 'Buy Now'
+                    buy.disabled = false
+
+                    setTimeout(() => {
+                        msg.innerHTML = ''
+                    }, 3000); 
+
+                    return false
+                }
+
                 let formdata = new FormData()
                 formdata.append('userid', userid)
-                formdata.append('package', network + 'airtime')
+                formdata.append('package', network + ' airtime')
                 formdata.append('ref', request_id)
                 formdata.append('amount', amount)
                 formdata.append('email', email)
@@ -213,26 +229,38 @@
                     processData: false,
                     contentType: false,
 					success: function(data){
-						alert(data);
+						if(data == 'true'){
+                            fetchWithHandling('https://sandbox.vtpass.com/api/pay', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'api-key': apiKey,
+                                    'secret-key': secretkey
+                                },
+                                body: JSON.stringify({
+                                    serviceID: network,
+                                    amount: amount,
+                                    phone: phone,
+                                    request_id: request_id
+                                })
+                            })
+                            .then(handleResponse)
+                            .catch(handleError);
+                        }else{
+                            msg.innerHTML = 'error creating transaction'
+                            msg.style.color = 'red'
+                            buy.innerHTML = 'Buy Now'
+                            buy.disabled = false
+
+                            setTimeout(() => {
+                                msg.innerHTML = ''
+                            }, 3000); 
+
+                            return false
+                        }
 					}
 			 	});
 
-                // fetchWithHandling('https://sandbox.vtpass.com/api/pay', {
-                //     method: 'POST',
-                //     headers: {
-                //         'Content-Type': 'application/json',
-                //         'api-key': apiKey,
-                //         'secret-key': secretKey
-                //     },
-                //     body: JSON.stringify({
-                //         serviceID: network,
-                //         amount: amount,
-                //         phone: phone,
-                //         request_id: request_id
-                //     })
-                // })
-                // .then(handleResponse)
-                // .catch(handleError);
             });
         }
 

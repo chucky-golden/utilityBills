@@ -25,8 +25,22 @@
         
 
         // get all users transactions
-        public function getHistory($id) {
+        public function getHistory($success, $ref, $id, $actbal) {
             try{
+                if($success != '' && $ref != ''){
+                    $sqlQuery1 = "UPDATE `".$this->process->users."` SET `actbal` = '$actbal' WHERE `id` = '$id'";
+                    $this->process->registerUser($sqlQuery1);
+
+                    $sqlQuery2 = "SELECT * FROM ".$this->process->users." WHERE id = '$id'";
+                    $data2 =  $this->process->loginUsers($sqlQuery2);
+                    $_SESSION['user'] = $data2[0];
+
+
+                    $sqlQuery3 = "UPDATE `".$this->process->history."` SET `paid` = 0 WHERE `ref` = '$ref'";
+                    $this->process->registerUser($sqlQuery3);
+                }
+
+
                 $sqlQuery = "SELECT * FROM " . $this->process->history . " WHERE userid = '$id' ORDER BY id DESC LIMIT 25";
                 $data = $this->process->loginUsers($sqlQuery);
                 return $data;
@@ -35,6 +49,27 @@
                 echo $e->getMessage();
             }
 
+        }
+
+        // get total number of users for admin
+        public function getTotalTransaction($userid) {
+            try {
+                $amt = 0;
+                $sqlQuery = "SELECT * FROM " . $this->process->history . " WHERE userid = '$userid' AND paid = 0";
+                
+                $result = $this->process->loginUsers($sqlQuery);
+
+                if($result){
+                    foreach ($result as $res){
+                        $amt += $res['amount'];
+                    }
+                }
+                
+                return $amt;
+        
+            } catch (\Exception $e) {
+                echo $e->getMessage();
+            }
         }
 
 
@@ -48,17 +83,12 @@
                 $amount = trimData($post['amount']);
                 $actbal = trimData($post['actbal']);
 
-                $actbal -= $amount;
-
                 $createddate = date('d-m-Y H:i:sa');
 
                 $sqlQuery = "INSERT INTO ".$this->process->history." (userid, ref, package, amount, createddate) VALUES('$userid', '$ref', '$package', '$amount', '$createddate')";
                 
                 $saved = $this->process->registerUser($sqlQuery);
-                if($saved){
-
-                    $sqlQuery = "UPDATE `".$this->process->users."` SET `actbal` = '$actbal' WHERE `id` = '$userid'";
-                    $this->process->registerUser($sqlQuery);
+                if($saved){                    
 
                     $msg = '
                         <!DOCTYPE html>

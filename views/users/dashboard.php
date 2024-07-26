@@ -32,7 +32,7 @@
                     </div>
                     <div class="p-3">
                       <h6><a href="index.html" class="text-decoration-none text-dark fs-5">Account Balance</a></h6>
-                      <span class="text-muted small pt-2 ps-1">Visit your Dashboard</span>
+                      <span class="text-muted small pt-2 ps-1"><s>N</s><?=number_format($_SESSION['user']['actbal'])?></span>
 
                     </div>
                   </div>
@@ -52,7 +52,17 @@
                     </div>
                     <div class="p-3">
                       <h6><a href="history.html" class="text-decoration-none text-dark fs-5">Total Transaction</a></h6>
-                      <span class="text-muted small pt-2 ps-1">Check Your Transaction History</span>
+                      <span class="text-muted small pt-2 ps-1"><s>N</s>
+                        <?php
+                          if ($amt >= 1000000) {
+                            echo '1M+';
+                          } elseif ($amt >= 100000) {
+                            echo '100K+';
+                          } else {
+                            echo number_format($amt);
+                          }
+                        ?>
+                      </span>
 
                     </div>
                   </div>

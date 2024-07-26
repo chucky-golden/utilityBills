@@ -3,6 +3,9 @@
     // dashboard route (GET)
     $router->addRoute('GET', '/dashboard', function () {
         if(isset($_SESSION['user'])){
+            global $sub;
+            $amt = $sub->getTotalTransaction($_SESSION['user']['id']);
+
             require_once "views/users/dashboard.php";
             exit;
         }else{
@@ -25,10 +28,17 @@
 
 
     // editprofile route (GET)
-    $router->addRoute('GET', '/history', function () {
+    $router->addRoute('GET', '/history(.*)', function () {
         if(isset($_SESSION['user'])){
+            $ref = $_GET['ref'] ?? "";
+            $success = $_GET['success'] ?? "";
+            $amount = $_GET['amount'] ?? 0;
+
+            $actbal = $_SESSION['user']['actbal'];
+            $actbal -= $amount;
+
             global $sub;
-            $history = $sub->getHistory($_SESSION['user']['id']);
+            $history = $sub->getHistory($success, $ref, $_SESSION['user']['id'], $actbal);
             
             require_once "views/users/history.php";
             exit;
