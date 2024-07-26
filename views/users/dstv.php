@@ -33,6 +33,8 @@
                             <h5 class="card-title">CableTV (DSTV) </h5>
 
                             <div class="row g-3 mb-5">
+                                <p id="msg" style="color: red;"></p>
+
 
                                 <div class="col-12 place">
                                     <label for="inputNanme4" class="form-label">SmartCard / IUC Number</label>
@@ -91,11 +93,12 @@
         </div>
 
 
-        <script src="/views/jquery-3.2.1.min.js"></script>
+<script src="/views/jquery-3.2.1.min.js"></script>
 <script>
     let returnedData = []
     const menu = document.getElementById('menu');
     const verify = document.getElementById('verify');
+    const msg = document.getElementById('msg');
     const apiKey = '<?=$apikey?>';
     const publicKey = '<?=$publickey?>';
     const secretkey = '<?=$secretkey?>';
@@ -114,10 +117,14 @@
             const bcodeValue = document.getElementById('bcode').value
             const name = document.getElementById('name');
             const phone = document.getElementById('phone');
+            const msg = document.getElementById('msg');
+
 
             if(bcodeValue == ''){
                 msg.innerHTML = 'enter a smartcard number'
                 msg.style.color = 'red'
+                verify.disabled = false
+
 
                 setTimeout(() => {
                     msg.innerHTML = ''
@@ -220,12 +227,15 @@
 
         // Function to populate the select element with options
         function populateSelect(data) {
+            const amount = document.getElementById("amount")
+
             data.content.varations.forEach(item => {
                 const option = document.createElement('option');
                 option.value = item.variation_code;
                 option.textContent = item.name;
                 selectElement.appendChild(option);
             });
+            amount.value = data.content.varations[0].variation_amount
         }
 
         // Attach the checkSelection function to the select element's onchange event
@@ -298,7 +308,7 @@
                 
                 const service = document.getElementById("dynamic-select").value;
                 const billersCode = document.getElementById("bcode").value;
-                const amount = document.getElementById("amount").value;
+                const amount = parseFloat(document.getElementById("amount").value);
                 const plan = document.getElementById("plan").value;
                 const phone = document.getElementById("phone").value;
 
@@ -367,7 +377,7 @@
                                 headers: {
                                     'Content-Type': 'application/json',
                                     'api-key': apiKey,
-                                    'secret-key': secretKey
+                                    'secret-key': secretkey
                                 },
                                 body: JSON.stringify({
                                     variation_code: service,

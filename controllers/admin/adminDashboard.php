@@ -29,7 +29,6 @@
                         SELECT h.*, CONCAT(u.fname, ' ', u.lname) AS fullname
                         FROM ".$this->process->history." h
                         JOIN ".$this->process->users." u ON h.userid = u.id
-                        WHERE paid = 0
                         ORDER BY h.id DESC
                         LIMIT $offset, $recordsPerPage
                     ";
@@ -55,7 +54,7 @@
                         SELECT h.*, CONCAT(u.fname, ' ', u.lname) AS fullname
                         FROM ".$this->process->history." h
                         JOIN ".$this->process->users." u ON h.userid = u.id
-                        WHERE ref = '$key' AND WHERE paid = 0
+                        WHERE ref = '$key'
                         ORDER BY h.id DESC
                         LIMIT $offset, $recordsPerPage
                     ";
@@ -80,7 +79,6 @@
                         SELECT h.*, CONCAT(u.fname, ' ', u.lname) AS fullname
                         FROM ".$this->process->history." h
                         JOIN ".$this->process->users." u ON h.userid = u.id
-                        WHERE paid = 0
                         ORDER BY h.id DESC
                         LIMIT 10
                     ";
@@ -102,7 +100,7 @@
         public function getData($type, $id) {
             try{
                 if($type == 't'){
-                    $sqlQuery = "SELECT * FROM ".$this->process->history." WHERE userid = '$id' AND WHERE paid = 0";
+                    $sqlQuery = "SELECT * FROM ".$this->process->history." WHERE userid = '$id'";
                 }else{
                     $sqlQuery = "SELECT * FROM ".$this->process->users." WHERE id = '$id'";
                 }
@@ -202,7 +200,7 @@
         public function getTotalTransaction() {
             try {
                 $amt = 0;
-                $sqlQuery = "SELECT * FROM " . $this->process->history . " WHERE paid = 0";
+                $sqlQuery = "SELECT * FROM " . $this->process->history . "";
                 
                 $result = $this->process->loginUsers($sqlQuery);
 

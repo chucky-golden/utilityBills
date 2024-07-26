@@ -97,6 +97,8 @@
 
 <script src="/views/jquery-3.2.1.min.js"></script>
 <script>
+    const menu = document.getElementById('menu');
+    const verify = document.getElementById('verify');
     const apiKey = '<?=$apikey?>';
     const publicKey = '<?=$publickey?>';
     const secretkey = '<?=$secretkey?>';
@@ -126,6 +128,7 @@
         if (meterValue == '') {
             msg.innerHTML = 'enter a smartcard number'
             msg.style.color = 'red'
+            verify.disabled = false
 
             setTimeout(() => {
                 msg.innerHTML = ''

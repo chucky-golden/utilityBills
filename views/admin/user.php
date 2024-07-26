@@ -192,6 +192,7 @@
                                 <th scope="col">Reference</th>
                                 <th scope="col">Package</th>
                                 <th scope="col">Amount</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Time Stamp</th>
                             </tr>
                             </thead>
@@ -205,6 +206,13 @@
                                 <td><?=$transaction['ref']; ?></td>
                                 <td><?=$transaction['package']; ?></td>
                                 <td><?=$transaction['amount']; ?></td>
+                                <td><?php 
+                                    if($transaction['paid'] == 0):
+                                        echo '<span class="badge bg-success">successful</span>';
+                                    else:
+                                        echo '<span class="badge bg-danger">failed</span>';
+                                    endif;
+                                ?></td>
                                 <td><?=$transaction['createddate']; ?></td>
                             </tr>
                             <?php endforeach; ?>
