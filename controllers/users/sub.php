@@ -50,7 +50,7 @@
 
                 $actbal -= $amount;
 
-                $createddate = date('d/m/Y H:i:sa');
+                $createddate = date('d-m-Y H:i:sa');
 
                 $sqlQuery = "INSERT INTO ".$this->process->history." (userid, ref, package, amount, createddate) VALUES('$userid', '$ref', '$package', '$amount', '$createddate')";
                 
@@ -58,7 +58,7 @@
                 if($saved){
 
                     $sqlQuery = "UPDATE `".$this->process->users."` SET `actbal` = '$actbal' WHERE `id` = '$userid'";
-                    $this->process->loginUsers($sqlQuery);
+                    $this->process->registerUser($sqlQuery);
 
                     $msg = '
                         <!DOCTYPE html>
@@ -86,7 +86,7 @@
 
                     $subject = 'Completed Transaction';
 
-                    $this->mail->regemail($email, $subject, $msg);
+                    // $this->mail->regemail($email, $subject, $msg);
                     echo 'true';
                 }else{
                     echo 'false';

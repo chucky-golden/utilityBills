@@ -11,6 +11,10 @@
 
   <!-- Template Main JS File -->
   <script src="https://chuckyassets.netlify.app/js/main.js"></script>
+  <script src="https://chuckyassets.netlify.app/all.js"></script>
+  <!-- <script src="https://chuckyassets.netlify.app/main.js"></script> -->
+
+  <script src="/views/main.js"></script>
 
 </body>
 <script>

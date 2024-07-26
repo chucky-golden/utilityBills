@@ -4,6 +4,15 @@
     <?php require_once('partials/sidenav.php'); ?>  
 
   <main id="main" class="main">
+    <div class="pagetitle">
+      <h1>User Dashboard</h1>
+      <nav>
+          <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+              <li class="breadcrumb-item active">Dashboard</li>
+          </ol>
+      </nav>
+    </div>
 
     <!-- End Page Title -->
 
@@ -78,7 +87,7 @@
                 <div class="card-body">
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="fa-solid fa-coins"></i>
+                      <i class="fa fa-coins"></i>
                     </div>
                     <div class="p-3">
                       <h6><a href="/mtndata" class="text-decoration-none text-dark fs-5">Buy Data</a></h6>
@@ -116,7 +125,7 @@
                 <div class="card-body">
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="fa-solid fa-bolt"></i>
+                      <i class="fa fa-bolt"></i>
                     </div>
                     <div class="p-3">
                       <h6><a href="/electricity" class="text-decoration-none text-dark fs-5">Electricity Bills</a></h6>
@@ -135,7 +144,7 @@
                 <div class="card-body">
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="fa-solid fa-cash-register"></i>
+                      <i class="fa fa-cash-register"></i>
                     </div>
                     <div class="p-3">
                       <h6><a href="/deposit" class="text-decoration-none text-dark fs-5">Deposit</a></h6>
