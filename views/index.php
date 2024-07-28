@@ -49,7 +49,7 @@
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted" href="index.html#about">Get Started</a>
+      <a class="btn-getstarted" href="/login">Get Started</a>
 
     </div>
   </header>
@@ -66,7 +66,7 @@
           <h1 data-aos="fade-up">Welcome to <span>BillsHub</span></h1>
           <p data-aos="fade-up" data-aos-delay="100">Pay for your bills the easiest and quickest way<br></p>
           <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
-            <a href="#about" class="btn-get-started">Get Started</a>
+            <a href="/login" class="btn-get-started">Get Started</a>
           </div>
         </div>
       </div>
