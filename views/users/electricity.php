@@ -14,11 +14,11 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Utility Bills</h1>
+            <h1>Utility billz</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-                    <li class="breadcrumb-item active">Electricity Bills</li>
+                    <li class="breadcrumb-item active">Electricity billz</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->

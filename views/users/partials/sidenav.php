@@ -4,7 +4,7 @@
 <div class="d-flex align-items-center justify-content-between">
   <a href="/dashboard" class="logo d-flex align-items-center">
     <img src="https://basicassets.netlify.app/img/logo.png" alt="">
-    <span class="d-none d-lg-block">Billshub</span>
+    <span class="d-none d-lg-block">billzhub</span>
   </a>
   <i class="bi bi-list toggle-sidebar-btn"></i>
 </div>
@@ -149,7 +149,7 @@
   <li class="nav-item">
     <a class="nav-link collapsed" href="/electricity">
       <i class="fa-solid fa-bolt"></i>
-      <span>Electricity Bills</span>
+      <span>Electricity billz</span>
     </a>
   </li>
   <li class="nav-item">

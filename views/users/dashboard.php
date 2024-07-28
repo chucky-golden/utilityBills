@@ -138,7 +138,7 @@
                       <i class="fa fa-bolt"></i>
                     </div>
                     <div class="p-3">
-                      <h6><a href="/electricity" class="text-decoration-none text-dark fs-5">Electricity Bills</a></h6>
+                      <h6><a href="/electricity" class="text-decoration-none text-dark fs-5">Electricity billz</a></h6>
                       <span class="text-muted small pt-2 ps-1">Pay for elctctricity</span>
 
                     </div>

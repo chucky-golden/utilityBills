@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Billshub</title>
+  <title>billzhub</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -36,7 +36,7 @@
 
       <a href="/index" class="logo d-flex align-items-center me-auto">
         <img src="https://basicassets.netlify.app/img/logo.png" alt="">
-        <h1 class="sitename">BillsHub</h1>
+        <h1 class="sitename">billzHub</h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
@@ -63,8 +63,8 @@
       </div>
       <div class="container text-center">
         <div class="d-flex flex-column justify-content-center align-items-center">
-          <h1 data-aos="fade-up">Welcome to <span>BillsHub</span></h1>
-          <p data-aos="fade-up" data-aos-delay="100">Pay for your bills the easiest and quickest way<br></p>
+          <h1 data-aos="fade-up">Welcome to <span>billzHub</span></h1>
+          <p data-aos="fade-up" data-aos-delay="100">Pay for your billz the easiest and quickest way<br></p>
           <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
             <a href="/login" class="btn-get-started">Get Started</a>
           </div>
@@ -95,7 +95,7 @@
             <div class="service-item d-flex">
               <div class="icon flex-shrink-0"><i class="bi bi-card-checklist"></i></div>
               <div>
-                <h4 class="title"><a href="#" class="stretched-link">Electricity Bills</a></h4>
+                <h4 class="title"><a href="#" class="stretched-link">Electricity billz</a></h4>
                 <p class="description">Pay for your electricity with no hassle or delay.</p>
               </div>
             </div>
@@ -126,9 +126,9 @@
 
           <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
             <p class="who-we-are">Who We Are</p>
-            <h3>Making Bills Payment As Easy As Anything</h3>
+            <h3>Making billz Payment As Easy As Anything</h3>
             <p class="fst-italic">
-              At BillsHub, we are committed to enhancing the quality of life for our customers through innovative technology and excellent service. We strive to be the preferred telecommunications provider in Nigeria, delivering connectivity that powers dreams and drives progress.
+              At billzHub, we are committed to enhancing the quality of life for our customers through innovative technology and excellent service. We strive to be the preferred telecommunications provider in Nigeria, delivering connectivity that powers dreams and drives progress.
             </p>
             <ul>
               <li><i class="bi bi-check-circle"></i> <span>Nationwide Coverage: Our network spans across Nigeria, ensuring you stay connected wherever you are.</span></li>
@@ -209,7 +209,7 @@
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Features</h2>
-        <p>At BillsHub, we pride ourselves on offering a comprehensive range of services designed to meet the diverse communication needs of individuals and businesses in Nigeria. Our commitment to innovation, reliability, and customer satisfaction sets us apart in the dynamic telecom industry.  Explore our key features below:</p>
+        <p>At billzHub, we pride ourselves on offering a comprehensive range of services designed to meet the diverse communication needs of individuals and businesses in Nigeria. Our commitment to innovation, reliability, and customer satisfaction sets us apart in the dynamic telecom industry.  Explore our key features below:</p>
       </div><!-- End Section Title -->
 
       <div class="container">
@@ -377,7 +377,7 @@
             <div class="service-item item-red position-relative">
               <i class="bi bi-bounding-box-circles icon"></i>
               <div>
-                <h3>Electricity Bills</h3>
+                <h3>Electricity billz</h3>
                 <p>Pay for elctctricity.</p>
                 <a href="/login" class="read-more stretched-link">Learn More <i class="bi bi-arrow-right"></i></a>
               </div>
@@ -419,7 +419,7 @@
       <div class="row gy-4">
         <div class="col-lg-6 col-md-6 footer-about">
           <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">BillsHub</span>
+            <span class="sitename">billzHub</span>
           </a>
           <div class="footer-contact pt-3">
             <p>A108 Adam Street</p>

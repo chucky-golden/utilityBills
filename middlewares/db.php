@@ -6,7 +6,7 @@
         const HOST = 'localhost';
         const USER = 'root';
         const PASSWORD  = "";
-        const DATABASE  = "bills";   
+        const DATABASE  = "billz";   
         public $dbConnect = false;
 
         // tables
