@@ -60,7 +60,7 @@
                             $ref .= $num[$i] = rand(0, 9);
                         }
 
-                        $rfflink = "https://www.YuzTech.com/register?ref=".$ref;
+                        $rfflink = "https://www.Billshub.com/register?ref=".$ref;
 
                         $user = $this->auth->registerUser($fname, $lname, $uname, $email, $phone, $new_pass, $rfflink, 'user');
                         if($user == true) {
@@ -71,14 +71,14 @@
                                     <head>
                                         <meta charset="UTF-8">
                                         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                                        <title>Welcome Message</title>
+                                        <title>billshub</title>
                                     </head>
                                     <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;">
                                         <div style="background-color: #fff; padding: 25px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); max-width: 400px; text-align: center;">
-                                            <h3 style="color: #333; font-family: cursive;">YuzTech</h3>
+                                            <h3 style="color: #333; font-family: cursive;"><img src="https://basicassets.netlify.app/img/logo.png" alt="" width="50" height="50"> Billshub</h3>
                                             <h5 style="color: #333;">Welcome to Our Service!</h5>
                                             <p style="color: #777; font-size: 16px; margin: 10px 0;">We\'re delighted to have you with us. Our platform offers a wide range of features designed to provide you with the best experience. <br><br>Certain things are hard; making payments shouldn\'t be one of them. VTpass.com helps you make payments for services you enjoy right from the comfort of your home or office. The experience of total convenience, fast service delivery and easy payment is just at your fingertips.</p><br>
-                                            <a href="https://www.YuzTech.com" style="background-color: #2828a7; color: #fff; border: none; padding: 15px; font-size: 16px; border-radius: 5px; cursor: pointer; text-decoration: none;">Get Started</a>
+                                            <a href="https://www.Billshub.com" style="background-color: #2828a7; color: #fff; border: none; padding: 15px; font-size: 16px; border-radius: 5px; cursor: pointer; text-decoration: none;">Get Started</a>
                                         </div>
                                     </body>
                                     </html>
@@ -164,16 +164,16 @@
                                     <head>
                                         <meta charset="UTF-8">
                                         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                                        <title>Welcome Message</title>
+                                        <title>billshub</title>
                                     </head>
                                     <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;">
                                         <div style="background-color: #fff; padding: 25px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); max-width: 400px; text-align: center;">
-                                        <h3 style="color: #333; font-family: cursive;">YuzTech</h3>
+                                        <h3 style="color: #333; font-family: cursive;"><img src="https://basicassets.netlify.app/img/logo.png" alt="" width="50" height="50"> Billshub</h3>
                                         <h5 style="color: #333;">Forgot Password!</h5>
                                         <p style="color: #777; font-size: 16px; margin: 10px 0;">we got a request to reset your 
                                         password, if this was you, click the link below to reset password or ignore and nothing will happen to your account.<br><br></p><br>
-                                        <a href="https://www.YuzTech.com/recover?email='.$email.'" style="background-color: #2828a7; color: #fff; border: none; padding: 15px; font-size: 16px; border-radius: 5px; cursor: pointer; text-decoration: none;">Password reset</a><br><br>
-                                        <p><i>Always keep your account safe by not sharing sensitive information like password to anybody...<br><b style="color: blue">Team YuzTech</b></i></p>
+                                        <a href="https://www.Billshub.com/recover?email='.$email.'" style="background-color: #2828a7; color: #fff; border: none; padding: 15px; font-size: 16px; border-radius: 5px; cursor: pointer; text-decoration: none;">Password reset</a><br><br>
+                                        <p><i>Always keep your account safe by not sharing sensitive information like password to anybody...<br><b style="color: blue">Team Billshub</b></i></p>
                                         </div>
                                     </body>
                                     </html>

@@ -13,7 +13,7 @@
               <div class="d-flex justify-content-center py-4">
                 <a href="/admin/login" class="logo d-flex align-items-center w-auto">
                   <img src="https://chuckyassets.netlify.app/img/logo.png" alt="">
-                  <span class="d-none d-lg-block">YuzTech</span>
+                  <span class="d-none d-lg-block">Billshub</span>
                 </a>
               </div><!-- End Logo -->
 

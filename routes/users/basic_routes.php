@@ -1,4 +1,10 @@
 <?php
+    // index route (GET)
+    $router->addRoute('GET', '/', function () {        
+        require_once "views/index.php";
+        exit;
+    });
+    
     // login route (GET)
     $router->addRoute('GET', '/login(.*)', function () {        
         require_once "views/users/login.php";
