@@ -62,7 +62,7 @@
 
                                     <div class="col-12">
                                         <label for="inputPassword4" class="form-label">Amount</label>
-                                        <input type="number" min="500" class="form-control" id="amount" value="500">
+                                        <input type="number" min="500" class="form-control" id="amount" value="500" readonly>
                                     </div>
 
                                 </div>
@@ -317,21 +317,8 @@
 
                 let request_id = requestId()
 
-                if(amount == null || amount == '' || amount == undefined || phone == '' || phone == undefined){
+                if(phone == '' || phone == undefined){
                     msg.innerHTML = 'please enter a valid phone number and amount'
-                    msg.style.color = 'red'
-                    buy.innerHTML = 'Pay Bill'
-                    buy.disabled = false
-
-                    setTimeout(() => {
-                        msg.innerHTML = ''
-                    }, 3000);
-
-                    return false
-                }
-
-                if(amount < 500){
-                    msg.innerHTML = 'enter value greater than 100'
                     msg.style.color = 'red'
                     buy.innerHTML = 'Pay Bill'
                     buy.disabled = false
