@@ -20,44 +20,46 @@
             <div class="card-body">
             <h5 class="card-title">Transaction(s) History</h5>
             <?php require_once('partials/alert.php'); ?>
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th>REFERENCE</th>
-                    <th>PACKAGE</th>
-                    <th>AMOUNT</th>
-                    <th>STATUS</th>
-                    <th>DATE & TIME</th>
-                </tr>
-                </thead>
-                <tbody>
-                    <?php
-                        if ($history) :
-                            foreach ($history as $transaction):
-                    ?>
-
-                    <tr>
-                        <td><?=$transaction['ref']; ?></td>
-                        <td><?=$transaction['package']; ?></td>
-                        <td><?=$transaction['amount']; ?></td>
-                        <td><?php 
-                            if($transaction['paid'] == 0):
-                                echo '<span class="badge bg-success">successful</span>';
-                            else:
-                                echo '<span class="badge bg-danger">failed</span>';
-                            endif;
-                        ?></td>
-                        <td><?=$transaction['createddate']; ?></td>
-                    </tr>
-                    <?php endforeach; ?>
-                    <?php else: ?>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
                         <tr>
-                            <td><p>No transaction created yet.</p></td>
+                            <th>REFERENCE</th>
+                            <th>PACKAGE</th>
+                            <th>AMOUNT</th>
+                            <th>STATUS</th>
+                            <th>DATE & TIME</th>
                         </tr>
-                    <?php endif; ?>
-                    
-                </tbody>
-            </table>
+                        </thead>
+                        <tbody>
+                            <?php
+                                if ($history) :
+                                    foreach ($history as $transaction):
+                            ?>
+
+                            <tr>
+                                <td><?=$transaction['ref']; ?></td>
+                                <td><?=$transaction['package']; ?></td>
+                                <td><?=$transaction['amount']; ?></td>
+                                <td><?php 
+                                    if($transaction['paid'] == 0):
+                                        echo '<span class="badge bg-success">successful</span>';
+                                    else:
+                                        echo '<span class="badge bg-danger">failed</span>';
+                                    endif;
+                                ?></td>
+                                <td><?=$transaction['createddate']; ?></td>
+                            </tr>
+                            <?php endforeach; ?>
+                            <?php else: ?>
+                                <tr>
+                                    <td><p>No transaction created yet.</p></td>
+                                </tr>
+                            <?php endif; ?>
+                            
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         </div>

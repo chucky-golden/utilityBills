@@ -88,46 +88,48 @@
 
                     <?php else: ?>
 
-                        <table class="table table-borderless">
-                            <thead>
-                            <tr>
-                                <th scope="col">Reference</th>
-                                <th scope="col">Owner</th>
-                                <th scope="col">Package</th>
-                                <th scope="col">Amount</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php
-                                if ($transactions) :
-                                    foreach ($transactions as $transaction):
-                            ?>
-
-                            <tr>
-                                <td><?=$transaction['ref']; ?></td>
-                                <td><?=$transaction['fullname']; ?></td>
-                                <td><?=$transaction['package']; ?></td>
-                                <td><?=$transaction['amount']; ?></td>
-                                <td><?php 
-                                    if($transaction['paid'] == 0):
-                                        echo '<span class="badge bg-success">successful</span>';
-                                    else:
-                                        echo '<span class="badge bg-danger">failed</span>';
-                                    endif;
-                                ?></td>
-                                <td><a href="/admin/user?id=<?=$transaction['userid']?>" class="btn btn-primary">View Owner</a></td>
-                            </tr>
-                            <?php endforeach; ?>
-                            <?php else: ?>
+                        <div class="table-responsive">
+                            <table class="table table-borderless">
+                                <thead>
                                 <tr>
-                                    <td><p>No transaction created yet.</p></td>
+                                    <th scope="col">Reference</th>
+                                    <th scope="col">Owner</th>
+                                    <th scope="col">Package</th>
+                                    <th scope="col">Amount</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Action</th>
                                 </tr>
-                            <?php endif; ?>
-                            
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                <?php
+                                    if ($transactions) :
+                                        foreach ($transactions as $transaction):
+                                ?>
+
+                                <tr>
+                                    <td><?=$transaction['ref']; ?></td>
+                                    <td><?=$transaction['fullname']; ?></td>
+                                    <td><?=$transaction['package']; ?></td>
+                                    <td><?=$transaction['amount']; ?></td>
+                                    <td><?php 
+                                        if($transaction['paid'] == 0):
+                                            echo '<span class="badge bg-success">successful</span>';
+                                        else:
+                                            echo '<span class="badge bg-danger">failed</span>';
+                                        endif;
+                                    ?></td>
+                                    <td><a href="/admin/user?id=<?=$transaction['userid']?>" class="btn btn-primary">View Owner</a></td>
+                                </tr>
+                                <?php endforeach; ?>
+                                <?php else: ?>
+                                    <tr>
+                                        <td><p>No transaction created yet.</p></td>
+                                    </tr>
+                                <?php endif; ?>
+                                
+                                </tbody>
+                            </table>
+                        </div>
 
                     <?php endif ?>
 

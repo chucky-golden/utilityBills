@@ -46,71 +46,75 @@
 
                     <?php if (isset($_GET['search'])) :  ?>
 
-                        <table class="table table-bordered">
-                            <thead>
-                            <tr>
-                                <th scope="col">Customer Name</th>
-                                <th scope="col">Customer Email</th>
-                                <th scope="col">Phone Number</th>
-                                <th scope="col">Account Balance</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php
-                                if ($users) :
-                                    foreach ($users as $user):
-                            ?>
-                            <tr>
-                                <td><?=$user['fname'].' '.$user['lname']?></td>
-                                <td class="text-primary"><?=$user['email']?></td>
-                                <td><?=$user['phone']?></td>
-                                <td>$<?=number_format($user['actbal'])?></td>
-                                <td><a href="/admin/user?id=<?=$user['id']?>" class="btn btn-primary">View</a></td>
-                            </tr>
-                            <?php endforeach; ?>
-                            <?php else: ?>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
                                 <tr>
-                                    <td><p>No user account yet.</p></td>
+                                    <th scope="col">Customer Name</th>
+                                    <th scope="col">Customer Email</th>
+                                    <th scope="col">Phone Number</th>
+                                    <th scope="col">Account Balance</th>
+                                    <th scope="col">Action</th>
                                 </tr>
-                            <?php endif; ?> 
-                            
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                <?php
+                                    if ($users) :
+                                        foreach ($users as $user):
+                                ?>
+                                <tr>
+                                    <td><?=$user['fname'].' '.$user['lname']?></td>
+                                    <td class="text-primary"><?=$user['email']?></td>
+                                    <td><?=$user['phone']?></td>
+                                    <td>$<?=number_format($user['actbal'])?></td>
+                                    <td><a href="/admin/user?id=<?=$user['id']?>" class="btn btn-primary">View</a></td>
+                                </tr>
+                                <?php endforeach; ?>
+                                <?php else: ?>
+                                    <tr>
+                                        <td><p>No user account yet.</p></td>
+                                    </tr>
+                                <?php endif; ?> 
+                                
+                                </tbody>
+                            </table>
+                        </div>
 
                     <?php else: ?>
 
-                        <table class="table table-bordered">
-                            <thead>
-                            <tr>
-                                <th scope="col">Customer Name</th>
-                                <th scope="col">Customer Email</th>
-                                <th scope="col">Phone Number</th>
-                                <th scope="col">Account Balance</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php
-                                if ($users) :
-                                    foreach ($users as $user):
-                            ?>
-                            <tr>
-                                <td><?=$user['fname'].' '.$user['lname']?></td>
-                                <td class="text-primary"><?=$user['email']?></td>
-                                <td><?=$user['phone']?></td>
-                                <td>$<?=number_format($user['actbal'])?></td>
-                                <td><a href="/admin/user?id=<?=$user['id']?>" class="btn btn-primary">View</a></td>
-                            </tr>
-                            <?php endforeach; ?>
-                            <?php else: ?>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
                                 <tr>
-                                    <td><p>No user account yet.</p></td>
+                                    <th scope="col">Customer Name</th>
+                                    <th scope="col">Customer Email</th>
+                                    <th scope="col">Phone Number</th>
+                                    <th scope="col">Account Balance</th>
+                                    <th scope="col">Action</th>
                                 </tr>
-                            <?php endif; ?> 
-                            
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                <?php
+                                    if ($users) :
+                                        foreach ($users as $user):
+                                ?>
+                                <tr>
+                                    <td><?=$user['fname'].' '.$user['lname']?></td>
+                                    <td class="text-primary"><?=$user['email']?></td>
+                                    <td><?=$user['phone']?></td>
+                                    <td>$<?=number_format($user['actbal'])?></td>
+                                    <td><a href="/admin/user?id=<?=$user['id']?>" class="btn btn-primary">View</a></td>
+                                </tr>
+                                <?php endforeach; ?>
+                                <?php else: ?>
+                                    <tr>
+                                        <td><p>No user account yet.</p></td>
+                                    </tr>
+                                <?php endif; ?> 
+                                
+                                </tbody>
+                            </table>
+                        </div>
 
                     <?php endif ?>
 

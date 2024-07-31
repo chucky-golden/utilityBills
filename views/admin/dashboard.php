@@ -90,35 +90,37 @@
                 <div class="card-body">
                   <h5 class="card-title">Recently Created Accounts</h5>
 
-                  <table class="table table-bordered">
-                    <thead>
-                      <tr>
-                        <th scope="col">Customer Name</th>
-                        <th scope="col">Customer Email</th>
-                        <th scope="col">Account Balance</th>
-                        <th scope="col">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                        if ($limitedUsers) :
-                            foreach ($limitedUsers as $users):
-                    ?>
-                      <tr>
-                        <td><?=$users['fname'].' '.$users['lname']?></td>
-                        <td class="text-primary"><?=$users['email']?></td>
-                        <td>$<?=number_format($users['actbal'])?></td>
-                        <td><a href="/admin/user?id=<?=$users['id']?>" class="btn btn-primary">View</a></td>
-                      </tr>
-                      <?php endforeach; ?>
-                    <?php else: ?>
+                  <div class="responsive">
+                    <table class="table table-bordered">
+                      <thead>
                         <tr>
-                            <td><p>No user account yet.</p></td>
+                          <th scope="col">Customer Name</th>
+                          <th scope="col">Customer Email</th>
+                          <th scope="col">Account Balance</th>
+                          <th scope="col">Action</th>
                         </tr>
-                    <?php endif; ?> 
-                      
-                    </tbody>
-                  </table>
+                      </thead>
+                      <tbody>
+                      <?php
+                          if ($limitedUsers) :
+                              foreach ($limitedUsers as $users):
+                      ?>
+                        <tr>
+                          <td><?=$users['fname'].' '.$users['lname']?></td>
+                          <td class="text-primary"><?=$users['email']?></td>
+                          <td>$<?=number_format($users['actbal'])?></td>
+                          <td><a href="/admin/user?id=<?=$users['id']?>" class="btn btn-primary">View</a></td>
+                        </tr>
+                        <?php endforeach; ?>
+                      <?php else: ?>
+                          <tr>
+                              <td><p>No user account yet.</p></td>
+                          </tr>
+                      <?php endif; ?> 
+                        
+                      </tbody>
+                    </table>
+                  </div>
 
                 </div>
 
@@ -140,38 +142,40 @@
                 <div class="card-body pb-0">
                 <h5 class="card-title">Recent Transactions</h5>
 
-                  <table class="table table-borderless">
-                    <thead>
-                      <tr>
-                        <th scope="col">Reference</th>
-                        <th scope="col">Owner</th>
-                        <th scope="col">Package</th>
-                        <th scope="col">Amount</th>
-                        <th scope="col">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                        if ($limitedTransactions) :
-                            foreach ($limitedTransactions as $transaction):
-                    ?>
-
-                      <tr>
-                        <td><?=$transaction['ref']; ?></td>
-                        <td><?=$transaction['fullname']; ?></td>
-                        <td><?=$transaction['package']; ?></td>
-                        <td><?=$transaction['amount']; ?></td>
-                        <td><a href="/admin/user?id=<?=$transaction['userid']?>" class="btn btn-primary">View Owner</a></td>
-                      </tr>
-                      <?php endforeach; ?>
-                    <?php else: ?>
+                  <div class="responsive">
+                    <table class="table table-borderless">
+                      <thead>
                         <tr>
-                            <td><p>No transaction created yet.</p></td>
+                          <th scope="col">Reference</th>
+                          <th scope="col">Owner</th>
+                          <th scope="col">Package</th>
+                          <th scope="col">Amount</th>
+                          <th scope="col">Action</th>
                         </tr>
-                    <?php endif; ?>
-                      
-                    </tbody>
-                  </table>
+                      </thead>
+                      <tbody>
+                      <?php
+                          if ($limitedTransactions) :
+                              foreach ($limitedTransactions as $transaction):
+                      ?>
+
+                        <tr>
+                          <td><?=$transaction['ref']; ?></td>
+                          <td><?=$transaction['fullname']; ?></td>
+                          <td><?=$transaction['package']; ?></td>
+                          <td><?=$transaction['amount']; ?></td>
+                          <td><a href="/admin/user?id=<?=$transaction['userid']?>" class="btn btn-primary">View Owner</a></td>
+                        </tr>
+                        <?php endforeach; ?>
+                      <?php else: ?>
+                          <tr>
+                              <td><p>No transaction created yet.</p></td>
+                          </tr>
+                      <?php endif; ?>
+                        
+                      </tbody>
+                    </table>
+                  </div>
 
                 </div>
 
