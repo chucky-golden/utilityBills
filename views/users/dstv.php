@@ -132,7 +132,7 @@
                 return false
             }
 
-        fetch('https://sandbox.vtpass.com/api/merchant-verify', {
+        fetch('https://api-service.vtpass.com/api/merchant-verify', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -201,7 +201,7 @@
         // Function to fetch data from the API
         async function fetchData() {
             try {
-                const response = await fetch('https://sandbox.vtpass.com/api/service-variations?serviceID=dstv', {
+                const response = await fetch('https://api-service.vtpass.com/api/service-variations?serviceID=dstv', {
                     method: 'GET',
                     headers: {
                         'api-key': apiKey,
@@ -359,7 +359,7 @@
                     contentType: false,
 					success: function(data){
 						if(data == 'true'){
-                            fetchWithHandling('https://sandbox.vtpass.com/api/pay', {
+                            fetchWithHandling('https://api-service.vtpass.com/api/pay', {
                                 method: 'POST',
                                 headers: {
                                     'Content-Type': 'application/json',

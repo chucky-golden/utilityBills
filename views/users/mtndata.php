@@ -93,7 +93,7 @@ require_once('partials/header.php');
         // Function to fetch data from the API
         async function fetchData() {
             try {
-                const response = await fetch('https://sandbox.vtpass.com/api/service-variations?serviceID=mtn-data', {
+                const response = await fetch('https://api-service.vtpass.com/api/service-variations?serviceID=mtn-data', {
                     method: 'GET',
                     headers: {
                         'api-key': apiKey,
@@ -239,7 +239,7 @@ require_once('partials/header.php');
                     contentType: false,
 					success: function(data){
 						if(data == 'true'){
-                            fetchWithHandling('https://sandbox.vtpass.com/api/pay', {
+                            fetchWithHandling('https://api-service.vtpass.com/api/pay', {
                                 method: 'POST',
                                 headers: {
                                     'Content-Type': 'application/json',

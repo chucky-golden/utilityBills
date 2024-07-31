@@ -90,7 +90,7 @@
         // Function to fetch data from the API
         async function fetchData() {
             try {
-                const response = await fetch('https://sandbox.vtpass.com/api/services?identifier=airtime', {
+                const response = await fetch('https://api-service.vtpass.com/api/services?identifier=airtime', {
                     method: 'GET',
                     headers: {
                         'api-key': apiKey,
@@ -230,7 +230,7 @@
                     contentType: false,
 					success: function(data){
 						if(data == 'true'){
-                            fetchWithHandling('https://sandbox.vtpass.com/api/pay', {
+                            fetchWithHandling('https://api-service.vtpass.com/api/pay', {
                                 method: 'POST',
                                 headers: {
                                     'Content-Type': 'application/json',
