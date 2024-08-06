@@ -12,7 +12,7 @@
 
               <div class="d-flex justify-content-center py-4">
                 <a href="/admin/login" class="logo d-flex align-items-center w-auto">
-                  <img src="https://basicassets.netlify.app/img/logo.png" alt="">
+                  <img src="/views/basicassets/img/logo.png" alt="">
                   <span class="d-none d-lg-block">billzhub</span>
                 </a>
               </div><!-- End Logo -->

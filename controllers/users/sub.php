@@ -100,7 +100,7 @@
                         </head>
                         <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;">
                             <div style="background-color: #fff; padding: 25px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); width: 400px;">
-                                <h3 style="color: #333; font-family: cursive; text-align: center;"><img src="https://basicassets.netlify.app/img/logo.png" alt="" width="50" height="50"> billzhub</h3>
+                                <h3 style="color: #333; font-family: cursive; text-align: center;"><img src="https://www.billzhub.com/views/basicassets/img/logo.png" alt="" width="50" height="50"> billzhub</h3>
                                 <h5 style="color: #333;">Transaction Complete</h5>
                                 <p style="color: #777; font-size: 10px;">Your request has been processed and transaction completed. see details of transaction below.</p><br>
                                 <p style="color: #777; font-size: 10px; display: flex; justify-content: space-between;"><b>Package:</b> <span>'.$package.'</span></p>

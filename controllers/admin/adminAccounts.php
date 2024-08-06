@@ -131,7 +131,7 @@
                             </head>
                             <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;">
                                 <div style="background-color: #fff; padding: 25px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); max-width: 400px; text-align: center;">
-                                <h3 style="color: #333; font-family: cursive;"><img src="https://basicassets.netlify.app/img/logo.png" alt="" width="50" height="50"> billzhub</h3>
+                                <h3 style="color: #333; font-family: cursive;"><img src="https://www.billzhub.com/views/basicassets/img/logo.png" alt="" width="50" height="50"> billzhub</h3>
                                 <h5 style="color: #333;">Forgot Password!</h5>
                                 <p style="color: #777; font-size: 16px; margin: 10px 0;">we got a request to reset your 
                                 password, if this was you, click the link below to reset password or ignore and nothing will happen to your account.<br><br></p><br>

@@ -9,8 +9,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="https://basicassets.netlify.app/img/logo.png" rel="icon">
-  <link href="https://basicassets.netlify.app/img/logo.png" rel="apple-touch-icon">
+  <link href="/views/basicassets/img/logo.png" rel="icon">
+  <link href="/views/basicassets/img/logo.png" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -18,14 +18,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="https://basicassets.netlify.app/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://basicassets.netlify.app/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="https://basicassets.netlify.app/vendor/aos/aos.css" rel="stylesheet">
-  <link href="https://basicassets.netlify.app/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="https://basicassets.netlify.app/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="/views/basicassets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/views/basicassets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/views/basicassets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="/views/basicassets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/views/basicassets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Main CSS File -->
-  <link href="https://basicassets.netlify.app/css/main.css" rel="stylesheet">
+  <link href="/views/basicassets/css/main.css" rel="stylesheet">
 
 </head>
 
@@ -35,7 +35,7 @@
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
       <a href="/index" class="logo d-flex align-items-center me-auto">
-        <img src="https://basicassets.netlify.app/img/logo.png" alt="">
+        <img src="/views/basicassets/img/logo.png" alt="">
         <h1 class="sitename">billzHub</h1>
       </a>
 
@@ -59,7 +59,7 @@
     <!-- Hero Section -->
     <section id="hero" class="hero section">
       <div class="hero-bg">
-        <img src="https://basicassets.netlify.app/img/telecom.webp" alt="">
+        <img src="/views/basicassets/img/telecom.webp" alt="">
       </div>
       <div class="container text-center">
         <div class="d-flex flex-column justify-content-center align-items-center">
@@ -142,18 +142,18 @@
           <div class="col-lg-6 about-images" data-aos="fade-up" data-aos-delay="200">
             <div class="row gy-4">
               <div class="col-lg-6 col-4 mx-auto">
-                <img src="https://basicassets.netlify.app/img/mtn.png" class="img-fluid" alt="">
+                <img src="/views/basicassets/img/mtn.png" class="img-fluid" alt="">
               </div>
               <div class="col-lg-6 col-4 mx-auto">
-                <img src="https://basicassets.netlify.app/img/9mobile.jpeg" class="img-fluid" alt="">
+                <img src="/views/basicassets/img/9mobile.jpeg" class="img-fluid" alt="">
               </div>
               <div class="col-lg-12">
                 <div class="row gy-4">
                   <div class="col-lg-6 col-4 mx-auto">
-                    <img src="https://basicassets.netlify.app/img/glo.jpeg" class="img-fluid" alt="">
+                    <img src="/views/basicassets/img/glo.jpeg" class="img-fluid" alt="">
                   </div>
                   <div class="col-lg-6 col-4 mx-auto">
-                    <img src="https://basicassets.netlify.app/img/airtel.jpeg" class="img-fluid" alt="">
+                    <img src="/views/basicassets/img/airtel.jpeg" class="img-fluid" alt="">
                   </div>
                 </div>
               </div>
@@ -174,27 +174,27 @@
         <div class="row gy-4">
 
           <div class="col-xl-2 col-md-3 col-6 client-logo">
-            <img src="https://basicassets.netlify.app/img/smile.jpeg" class="img-fluid" alt="">
+            <img src="/views/basicassets/img/smile.jpeg" class="img-fluid" alt="">
           </div><!-- End Client Item -->
 
           <div class="col-xl-2 col-md-3 col-6 client-logo">
-            <img src="https://basicassets.netlify.app/img/ntel.jpeg" class="img-fluid" alt="">
+            <img src="/views/basicassets/img/ntel.jpeg" class="img-fluid" alt="">
           </div><!-- End Client Item -->
 
           <div class="col-xl-2 col-md-3 col-6 client-logo">
-            <img src="https://basicassets.netlify.app/img/aedc.jpeg" class="img-fluid" alt="">
+            <img src="/views/basicassets/img/aedc.jpeg" class="img-fluid" alt="">
           </div><!-- End Client Item -->
 
           <div class="col-xl-2 col-md-3 col-6 client-logo">
-            <img src="https://basicassets.netlify.app/img/ekedc.png" class="img-fluid" alt="">
+            <img src="/views/basicassets/img/ekedc.png" class="img-fluid" alt="">
           </div><!-- End Client Item -->
 
           <div class="col-xl-2 col-md-3 col-6 client-logo">
-            <img src="https://basicassets.netlify.app/img/azura.png" class="img-fluid" alt="">
+            <img src="/views/basicassets/img/azura.png" class="img-fluid" alt="">
           </div><!-- End Client Item -->
 
           <div class="col-xl-2 col-md-3 col-6 client-logo">
-            <img src="https://basicassets.netlify.app/img/tcn.jpeg" class="img-fluid" alt="">
+            <img src="/views/basicassets/img/tcn.jpeg" class="img-fluid" alt="">
           </div><!-- End Client Item -->
 
         </div>
@@ -260,15 +260,15 @@
             <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
 
               <div class="tab-pane fade active show" id="features-tab-1">
-                <img src="https://basicassets.netlify.app/img/tabs-1.jpg" alt="" class="img-fluid">
+                <img src="/views/basicassets/img/tabs-1.jpg" alt="" class="img-fluid">
               </div><!-- End Tab Content Item -->
 
               <div class="tab-pane fade" id="features-tab-2">
-                <img src="https://basicassets.netlify.app/img/tabs-2.jpg" alt="" class="img-fluid">
+                <img src="/views/basicassets/img/tabs-2.jpg" alt="" class="img-fluid">
               </div><!-- End Tab Content Item -->
 
               <div class="tab-pane fade" id="features-tab-3">
-                <img src="https://basicassets.netlify.app/img/tabs-3.jpg" alt="" class="img-fluid">
+                <img src="/views/basicassets/img/tabs-3.jpg" alt="" class="img-fluid">
               </div><!-- End Tab Content Item -->
             </div>
 
@@ -288,7 +288,7 @@
         <div class="row gy-4 justify-content-between features-item">
 
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <img src="https://basicassets.netlify.app/img/cable.jpeg" class="img-fluid col-12" alt="">
+            <img src="/views/basicassets/img/cable.jpeg" class="img-fluid col-12" alt="">
           </div>
 
           <div class="col-lg-5 d-flex align-items-center" data-aos="fade-up" data-aos-delay="200">
@@ -318,7 +318,7 @@
           </div>
 
           <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="200">
-            <img src="https://basicassets.netlify.app/img/electric.webp" class="img-fluid col-lg-12" alt="">
+            <img src="/views/basicassets/img/electric.webp" class="img-fluid col-lg-12" alt="">
           </div>
 
         </div><!-- Features Item -->
@@ -454,14 +454,8 @@
     </div>
 
     <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">QuickStart</strong><span>All Rights Reserved</span></p>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
+      <p>© <span>Copyright</span></p>
+      Designed by <a href="https://www.linkedin.com/in/chukwudi-uwakwe-24523a184/">cheese</a>
     </div>
 
   </footer>
@@ -473,14 +467,14 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
-  <script src="https://basicassets.netlify.app/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="https://basicassets.netlify.app/vendor/php-email-form/validate.js"></script>
-  <script src="https://basicassets.netlify.app/vendor/aos/aos.js"></script>
-  <script src="https://basicassets.netlify.app/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="https://basicassets.netlify.app/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="/views/basicassets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/views/basicassets/vendor/php-email-form/validate.js"></script>
+  <script src="/views/basicassets/vendor/aos/aos.js"></script>
+  <script src="/views/basicassets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="/views/basicassets/vendor/swiper/swiper-bundle.min.js"></script>
 
   <!-- Main JS File -->
-  <script src="https://basicassets.netlify.app/js/main.js"></script>
+  <script src="/views/basicassets/js/main.js"></script>
 
 </body>
 
