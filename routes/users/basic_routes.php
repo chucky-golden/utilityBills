@@ -29,6 +29,13 @@
         exit;
     });
 
+    // test mail (GET)
+    $router->addRoute('GET', '/testmail', function () {
+        global $account;
+        $account->testmail();
+        exit;
+    });
+
 
 
 

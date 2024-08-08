@@ -32,12 +32,15 @@
                             <div class="row g-3 mb-5">
                                 <p id="msg" style="color: red;"></p>
                                 <div class="col-12 place">
-                                    <label for="inputNanme4" class="form-label">Amount</label>
-                                    <input type="text" class="form-control" placeholder="Amount to deposit" id="amount">
+                                    <label for="inputNanme4" class="form-label">Enter Amount To Deposit</label>
+                                    <input type="number" class="form-control" value="50" min="50" id="amount">
                                 </div>
 
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-primary col-12" id="pay">Deposit Amount</button>
+                                </div>
+                                <div class="text-center">
+                                    <p>Service charge of <s>N</s>50 will be deducted for each deposit transactions</p>
                                 </div>
                             </div>
                         </div>
@@ -145,7 +148,7 @@
             contentType: false,
             success: function(data){
                 if (data == 'true') {
-                    return payWithMonnify(email, amount, fullname, ref)
+                    return payWithMonnify(email, amount + 50, fullname, ref)
                 } else {
                     msgcheck.innerHTML = 'error processing request'
                     msgcheck.style.color = 'red'
