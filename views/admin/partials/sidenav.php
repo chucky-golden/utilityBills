@@ -72,6 +72,13 @@
     </a>
   </li><!-- End F.A.Q Page Nav -->
 
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="/admin/broadcast">
+      <i class="bi bi-question-circle"></i>
+      <span>Broadcast Message</span>
+    </a>
+  </li><!-- End F.A.Q Page Nav -->
+
 
   <li class="nav-item">
     <a class="nav-link collapsed" href="/admin/logout">

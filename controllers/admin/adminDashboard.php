@@ -4,19 +4,23 @@
     require_once 'middlewares/validations.php';	
     require_once 'middlewares/auth.php';
     require_once 'middlewares/processor.php';
+    require_once 'middlewares/mailer.php';
 
     use Processor\Processes;
     use Auth\Authentication;
+    use MyMail\Mailer;
 
 
     class MyAdminDashboard{
 
         public $process = false;
         public $auth = false;
+        public $mail = false;
         
         public function __construct(){
             $this->auth = new  Authentication();
             $this->process = new Processes();
+            $this->mail = new Mailer();
         }
         
         
@@ -243,6 +247,53 @@
                 }
                 
                 return $this->process->loginUsers($sqlQuery);
+
+            } catch (\Exception $e) {
+                echo $e->getMessage();
+            }
+
+        }
+
+        // broadcast message to all users
+        public function broadcastMessage($post) {
+            try{
+                $message = trimData($post['message']);
+
+                $sqlQuery = "SELECT * FROM ".$this->process->users."";                
+                $users = $this->process->loginUsers($sqlQuery);
+
+                $msg = '
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <title>billzhub</title>
+                        </head>
+                        <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;">
+                            <div style="background-color: #fff; padding: 25px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); width: 400px;">
+                                <h3 style="color: #333; font-family: cursive; text-align: center;"><img src="https://www.billzhub.com/views/basicassets/img/logo.png" alt="" width="50" height="50"> billzhub</h3>
+                                <h5 style="color: #333;">From BillzHub Technologies</h5>
+                                <p style="color: #777; font-size: 10px;">'.$message.'</p><br>
+                            </div>
+                        </body>
+                        </html>
+
+                    ';
+
+                    $subject = 'Completed Transaction';
+
+                    foreach ($users as $user) {
+                        $email = $user['email'];
+                        $data = $this->mail->regemail($email, $subject, $msg);
+                        if (!$data) {
+                            header('location: /admin/broadcast?error=error sending message to '.$email);
+                            return false;
+                        }
+                    }
+                    // If all emails are sent successfully
+                    header('location: /admin/broadcast?success=messages sent');
+                    return true;
 
             } catch (\Exception $e) {
                 echo $e->getMessage();

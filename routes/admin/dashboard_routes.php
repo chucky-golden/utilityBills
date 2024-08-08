@@ -203,6 +203,18 @@
     });
 
 
+    // broadcast route (GET)
+    $router->addRoute('GET', '/admin/broadcast', function () {
+        if(isset($_SESSION['admin'])){
+            require_once "views/admin/broadcast.php";
+            exit;
+        }else{
+            header('location: /');
+            exit;
+        }
+    });
+
+
     // logout route (GET)
     $router->addRoute('GET', '/admin/logout', function () {
         session_unset();
@@ -222,6 +234,14 @@
     $router->addRoute('POST', '/admin/edituserbalance', function () {
         global $adminDash;
         $adminDash->editUserBalance($_POST);
+        exit;
+    });
+
+
+    // admin edit product route (POST)
+    $router->addRoute('POST', '/admin/broadcast', function () {
+        global $adminDash;
+        $adminDash->broadcastMessage($_POST);
         exit;
     });
 
